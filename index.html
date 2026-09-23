@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABNT - Acústica e Efeito Doppler</title>
+
+    <!-- MathJax para renderizar as fórmulas -->
+    <script>
+    MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']]
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* ===== CONFIGURAÇÕES GERAIS ABNT ===== */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000;
+        }
+
+        .pagina {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            margin: 10mm auto;
+            padding: 30mm 20mm 20mm 30mm;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+            page-break-after: always;
+            position: relative;
+        }
+
+        .pagina:last-child {
+            page-break-after: auto;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 2cm;
+            right: 2cm;
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+        }
+
+        /* ===== CAPA ===== */
+        .capa {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .capa .instituicao {
+            font-weight: bold;
+            font-size: 14pt;
+            margin-bottom: 2em;
+        }
+        .capa .autor {
+            font-weight: bold;
+            font-size: 12pt;
+            margin-bottom: 3em;
+        }
+        .capa .titulo {
+            font-weight: bold;
+            font-size: 14pt;
+            text-transform: uppercase;
+            margin-bottom: 3em;
+        }
+        .capa .cidade {
+            font-size: 12pt;
+            margin-top: 6em;
+        }
+
+        /* ===== FOLHA DE ROSTO ===== */
+        .folharosto {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: left;
+        }
+        .folharosto .autor {
+            font-weight: bold;
+            font-size: 12pt;
+            margin-bottom: 2em;
+            text-align: center;
+        }
+        .folharosto .titulo {
+            font-weight: bold;
+            font-size: 14pt;
+            text-transform: uppercase;
+            margin-bottom: 2em;
+            text-align: center;
+        }
+        .folharosto .natureza {
+            font-size: 12pt;
+            text-align: justify;
+            margin-bottom: 2em;
+            margin-left: 4.5cm;
+            margin-right: 0;
+            text-indent: 0;
+        }
+        .folharosto .orientador {
+            font-size: 12pt;
+            text-align: right;
+            margin-left: 0;
+            text-indent: 0;
+            margin-bottom: 2em;
+        }
+        .folharosto .cidade {
+            font-size: 12pt;
+            margin-top: 6em;
+            text-align: center;
+        }
+
+        /* ===== SUMÁRIO ===== */
+        .sumario h1 {
+            text-align: center;
+            font-size: 12pt;
+            text-transform: uppercase;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+        }
+        .sumario ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .sumario li {
+            font-size: 12pt;
+            margin-bottom: 0.25em;
+            text-indent: 0;
+            text-align: left;
+        }
+        .sumario li.primaria {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .sumario li.secundaria {
+            font-weight: normal;
+            text-transform: none;
+            padding-left: 0.75cm;
+        }
+        .sumario .item {
+            display: flex;
+            align-items: baseline;
+        }
+        .sumario .item .titulo {
+            flex: 0 0 auto;
+        }
+        .sumario .item .dots {
+            flex: 1 1 auto;
+            border-bottom: 1px dotted #000;
+            margin: 0 0.5em;
+            transform: translateY(-0.2em);
+        }
+        .sumario .item .numero {
+            flex: 0 0 auto;
+        }
+
+        /* ===== CONTEÚDO ===== */
+        .conteudo {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            color: #000;
+        }
+        .conteudo h2 {
+            font-size: 12pt;
+            text-transform: uppercase;
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+            text-align: left;
+            font-weight: bold;
+        }
+        .conteudo h3 {
+            font-size: 12pt;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+            text-align: left;
+            font-weight: bold;
+            text-transform: none;
+        }
+        .conteudo p {
+            text-indent: 1.25cm;
+            text-align: justify;
+            margin-bottom: 0.75em;
+        }
+        .conteudo p.formula,
+        .conteudo div.formula {
+            text-indent: 0;
+            text-align: center;
+            margin: 1em 0;
+        }
+
+        /* Referências */
+        .conteudo .referencias h2 {
+            text-align: center;
+            margin-bottom: 1em;
+        }
+        .conteudo .referencias p {
+            text-indent: 0;
+            margin-left: 0;
+            text-align: left;
+            line-height: 1.0;
+            margin-bottom: 1em;
+        }
+        .conteudo .referencias strong {
+            font-weight: bold;
+        }
+
+        /* Impressão */
+        @media print {
+            body {
+                background: none;
+            }
+            .pagina {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CAPA (não conta, sem número) -->
+    <div class="pagina capa">
+        <p class="instituicao">COLÉGIO UNICULTURA</p>
+        <p class="autor">
+            Daniel Augustus Gomes Barbosa<br>
+            Felipe Marcellus Cunha Ribeiro<br>
+            João Vitor Lourenço da Silva<br>
+            Nicolas Enzo Aoki<br>
+            Nicola Soares Leite<br>
+            Wendy Luiggi Correia
+        </p>
+        <h1 class="titulo">Acústica e Efeito Doppler:<br>Fundamentos e Aplicações</h1>
+        <p class="cidade">Guarulhos<br>2026</p>
+    </div>
+
+    <!-- FOLHA DE ROSTO (p. 1, sem número) -->
+    <div class="pagina folharosto">
+        <p class="autor">
+            Daniel Augustus Gomes Barbosa<br>
+            Felipe Marcellus Cunha Ribeiro<br>
+            João Vitor Lourenço da Silva<br>
+            Nicolas Enzo Aoki<br>
+            Nicola Soares Leite<br>
+            Wendy Luiggi Correia
+        </p>
+        <h1 class="titulo">Acústica e Efeito Doppler:<br>Fundamentos e Aplicações</h1>
+        <p class="natureza">Trabalho apresentado ao Colégio Unicultura, como requisito parcial para avaliação na disciplina de Física, sob orientação do Prof. [Nome do Professor].</p>
+        <p class="orientador">Orientador: Prof. [Nome do Professor]</p>
+        <p class="cidade">Guarulhos<br>2026</p>
+    </div>
+
+    <!-- SUMÁRIO (p. 2, sem número) -->
+    <div class="pagina sumario">
+        <h1>Sumário</h1>
+        <ul>
+            <li class="item primaria">
+                <span class="titulo">1 Introdução</span>
+                <span class="dots"></span>
+                <span class="numero">3</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">2 A Natureza da Onda Sonora</span>
+                <span class="dots"></span>
+                <span class="numero">4</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">3 Velocidade de Propagação</span>
+                <span class="dots"></span>
+                <span class="numero">5</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">4 Fenômenos Sonoros Fundamentais</span>
+                <span class="dots"></span>
+                <span class="numero">6</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">4.1 Reflexão: eco e reverberação</span>
+                <span class="dots"></span>
+                <span class="numero">6</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">4.2 Refração acústica e gradientes térmicos</span>
+                <span class="dots"></span>
+                <span class="numero">6</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">4.3 Difração e o princípio de Huygens</span>
+                <span class="dots"></span>
+                <span class="numero">7</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">4.4 Interferência e batimento</span>
+                <span class="dots"></span>
+                <span class="numero">7</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">4.5 Ressonância e modos normais</span>
+                <span class="dots"></span>
+                <span class="numero">7</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">5 Efeito Doppler</span>
+                <span class="dots"></span>
+                <span class="numero">8</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">5.1 Dedução cinemática</span>
+                <span class="dots"></span>
+                <span class="numero">8</span>
+            </li>
+            <li class="item secundaria">
+                <span class="titulo">5.2 Equação geral e convenção de sinais</span>
+                <span class="dots"></span>
+                <span class="numero">9</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">6 Ondas de Choque e Regime Supersônico</span>
+                <span class="dots"></span>
+                <span class="numero">10</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">7 Considerações Finais</span>
+                <span class="dots"></span>
+                <span class="numero">11</span>
+            </li>
+            <li class="item primaria">
+                <span class="titulo">Referências</span>
+                <span class="dots"></span>
+                <span class="numero">12</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ============ CONTEÚDO (numerado a partir da p. 3) ============ -->
+
+    <!-- 1 Introdução (p. 3) -->
+    <div class="pagina conteudo" id="introducao">
+        <span class="page-number">3</span>
+        <h2>1 Introdução</h2>
+        <p>Este documento reúne os conceitos fundamentais da acústica e do efeito Doppler, com ênfase na interpretação física dos fenômenos e na aplicação correta das equações. A experiência docente mostra que a maior dificuldade dos estudantes não está na manipulação algébrica, mas na compreensão do que cada grandeza representa e de como as condições do meio alteram o comportamento da onda. Por isso, procuro aqui combinar rigor formal com explicações que privilegiam o entendimento conceitual.</p>
+    </div>
+
+    <!-- 2 A natureza da onda sonora (p. 4) -->
+    <div class="pagina conteudo" id="natureza">
+        <span class="page-number">4</span>
+        <h2>2 A Natureza da Onda Sonora</h2>
+        <p>O som é uma onda mecânica. Necessita, portanto, de um meio material — sólido, líquido ou gasoso — para se propagar, sendo incapaz de atravessar o vácuo. Trata-se de uma onda longitudinal: a vibração das partículas do meio ocorre na mesma direção em que a onda se desloca. Esse movimento produz ciclos alternados de compressão (regiões de alta pressão e maior densidade de partículas) e rarefação (regiões de baixa pressão e menor densidade).</p>
+    </div>
+
+    <!-- 3 Velocidade de propagação (p. 5) -->
+    <div class="pagina conteudo" id="velocidade">
+        <span class="page-number">5</span>
+        <h2>3 Velocidade de Propagação</h2>
+        <p>A velocidade do som depende das propriedades elásticas e inerciais do meio. Para fluidos e gases, uma expressão adequada é:</p>
+        <div class="formula">\[ v=\sqrt{\frac{K}{\rho}} \]</div>
+        <p>em que \(K\) é o módulo de elasticidade volumétrico e \(\rho\) é a densidade. Em sólidos, a expressão depende da geometria do corpo. Para uma barra fina, por exemplo, usa-se:</p>
+        <div class="formula">\[ v=\sqrt{\frac{E}{\rho}} \]</div>
+        <p>em que \(E\) é o módulo de Young. Para um sólido extenso, uma forma mais geral é:</p>
+        <div class="formula">\[ v=\sqrt{\frac{K+\frac{4}{3}G}{\rho}} \]</div>
+        <p>em que \(G\) é o módulo de cisalhamento. Em qualquer caso, como consequência geral, o som se propaga mais rapidamente em sólidos, de forma intermediária em líquidos e mais lentamente em gases.</p>
+        <p>Nos gases, a temperatura absoluta exerce forte influência. Para o ar atmosférico, uma aproximação linear amplamente utilizada é:</p>
+        <div class="formula">\[ v \approx 331{,}5+0{,}6\cdot T_C \]</div>
+        <p>A \(20^{\circ}\text{C}\), obtém-se \(v \approx 343\ \text{m/s}\). Vale notar que essa aproximação é válida para intervalos moderados de temperatura; em condições extremas, efeitos de umidade e composição do ar podem exigir correções.</p>
+    </div>
+
+    <!-- 4 Fenômenos sonoros fundamentais - parte 1 (p. 6) -->
+    <div class="pagina conteudo" id="fenomenos1">
+        <span class="page-number">6</span>
+        <h2>4 Fenômenos Sonoros Fundamentais</h2>
+
+        <h3>4.1 Reflexão: eco e reverberação</h3>
+        <p>A reflexão ocorre quando a onda sonora encontra uma superfície cuja impedância acústica difere significativamente daquela do meio em que vinha se propagando. Parte da energia retorna ao meio de origem. O cérebro humano possui persistência auditiva de aproximadamente \(0{,}1\ \text{s}\). Se dois sons idênticos atingem o ouvido em intervalo inferior a esse valor, são interpretados como um único som prolongado.</p>
+        <p>Para que haja eco nítido, o som refletido deve retornar após o término da persistência auditiva (\(\Delta t \ge 0{,}1\ \text{s}\)). Com \(v=340\ \text{m/s}\), a distância total percorrida é \(34\ \text{m}\), e a distância mínima ao obstáculo é \(17\ \text{m}\). Abaixo disso, ocorre reverberação — sensação de prolongamento do som original. Esse fenômeno é decisivo no projeto acústico de teatros, auditórios e estúdios (Everest, 2001).</p>
+
+        <h3>4.2 Refração acústica e gradientes térmicos</h3>
+        <p>A refração consiste na alteração da velocidade de propagação devido à mudança de propriedades do meio. Na atmosfera, gradientes de temperatura desviam a trajetória do som. Durante o dia, o solo aquecido aquece as camadas inferiores de ar, onde o som é mais rápido; a onda sofre deflexão para cima, limitando o alcance ao nível do solo. À noite, o solo esfria rapidamente, as camadas inferiores ficam mais frias e o som curva-se para baixo. Por isso, sons distantes são ouvidos com mais clareza à noite.</p>
+    </div>
+
+    <!-- 4 Fenômenos sonoros fundamentais - parte 2 (p. 7) -->
+    <div class="pagina conteudo" id="fenomenos2">
+        <span class="page-number">7</span>
+
+        <h3>4.3 Difração e o princípio de Huygens</h3>
+        <p>A difração é a capacidade da onda de contornar obstáculos ou expandir-se ao atravessar aberturas. Pelo princípio de Huygens, cada ponto de uma frente de onda age como nova fonte de ondas esféricas. A eficiência depende da relação entre \(\lambda\) e \(d\): é significativa quando \(\lambda \gtrsim d\); didaticamente, pode-se dizer que é máxima quando \(\lambda \approx d\) ou \(\lambda > d\). O espectro audível vai de \(20\ \text{Hz}\) a \(20.000\ \text{Hz}\), com \(\lambda\) entre \(17\ \text{m}\) e \(1{,}7\ \text{cm}\). Como objetos cotidianos têm dimensões nessa faixa, as ondas graves contornam obstáculos com facilidade — daí a possibilidade de ouvir uma conversa através de uma porta aberta.</p>
+
+        <h3>4.4 Interferência e batimento</h3>
+        <p>Quando duas ou mais fontes emitem simultaneamente, as pressões acústicas se somam algebricamente (princípio da superposição). Na interferência construtiva, as frentes estão em fase e a amplitude aumenta. Na destrutiva, estão em oposição de fase e as variações de pressão se cancelam; se as amplitudes forem idênticas, há silêncio. Para frequências ligeiramente diferentes, \(f_1 \approx f_2\), surge o batimento:</p>
+        <div class="formula">\[ f_{\text{batimento}}=|f_1-f_2| \]</div>
+
+        <h3>4.5 Ressonância e modos normais</h3>
+        <p>Todo sistema físico possui frequências naturais de oscilação. Quando estimulado por uma força periódica com frequência igual a uma dessas frequências naturais, o sistema absorve energia de forma altamente eficiente, e a amplitude cresce. Esse é o princípio da ressonância, que tanto pode amplificar o som — como na caixa de um violão — quanto causar danos a estruturas mecânicas.</p>
+    </div>
+
+    <!-- 5 Efeito Doppler - parte 1 (p. 8) -->
+    <div class="pagina conteudo" id="doppler1">
+        <span class="page-number">8</span>
+        <h2>5 Efeito Doppler</h2>
+        <p>O efeito Doppler é a alteração da frequência percebida devido ao movimento relativo entre fonte e receptor.</p>
+
+        <h3>5.1 Dedução cinemática</h3>
+        <p>Considere uma fonte que emite som com período \(T\) e frequência \(f=1/T\). O som se propaga com velocidade \(v\).</p>
+        <p>Para uniformizar a notação, adoto desde já a convenção algébrica: traça-se uma linha de \(O\) para \(F\), definida como sentido positivo. Assim, \(v_O\) e \(v_F\) são componentes algébricas nessa direção. Quando a fonte se aproxima, \(v_F<0\); quando se afasta, \(v_F>0\). Quando o observador se aproxima, \(v_O>0\); quando se afasta, \(v_O<0\).</p>
+
+        <p><em>Fonte em movimento, observador estático:</em> o comprimento de onda aparente à frente da fonte é:</p>
+        <div class="formula">\[ \lambda_{\text{ap}}=\frac{v+v_F}{f} \]</div>
+        <p>Se \(v_F<0\), a fonte está se aproximando e \(\lambda_{\text{ap}}\) diminui. Se \(v_F>0\), a fonte está se afastando e \(\lambda_{\text{ap}}\) aumenta. A frequência aparente é:</p>
+        <div class="formula">\[ f_{\text{ap}}=\frac{v}{\lambda_{\text{ap}}}= f\left(\frac{v}{v+v_F}\right) \]</div>
+
+        <p><em>Observador em movimento, fonte estática:</em> o comprimento de onda não muda, mas a velocidade relativa de encontro é \(v'=v+v_O\). Assim:</p>
+        <div class="formula">\[ f_{\text{ap}}=f\left(\frac{v+v_O}{v}\right) \]</div>
+        <p>Se o observador se aproxima, \(v_O>0\) e a frequência aparente aumenta; se se afasta, \(v_O<0\) e a frequência diminui.</p>
+    </div>
+
+    <!-- 5 Efeito Doppler - parte 2 (p. 9) -->
+    <div class="pagina conteudo" id="doppler2">
+        <span class="page-number">9</span>
+
+        <p>Caso se prefira trabalhar com módulos, basta escrever \(u_F\) para o módulo da velocidade da fonte em relação ao meio e usar, por exemplo, \(f_{\text{ap}}=f\left(\frac{v}{v-u_F}\right)\) quando a fonte se aproxima. A equação geral com componentes algébricas, porém, evita essa duplicação de fórmulas.</p>
+
+        <h3>5.2 Equação geral e convenção de sinais</h3>
+        <p>Combinando os casos:</p>
+        <div class="formula">\[ f_{\text{ap}}=f\left(\frac{v+v_O}{v+v_F}\right) \]</div>
+        <p>A convenção é a seguinte: traça-se uma linha de \(O\) para \(F\), definida como sentido positivo. Se o vetor velocidade do observador apontar nesse sentido, \(v_O\) é positivo; caso contrário, negativo. O mesmo vale para a fonte. Quando a fonte se aproxima, \(v_F\) é negativo e a frequência aparente aumenta; quando o observador se aproxima, \(v_O\) é positivo e a frequência também aumenta. Essa convenção costuma ser a principal fonte de erros, e recomendo que seja sempre explicitada no início da resolução de problemas.</p>
+    </div>
+
+    <!-- 6 Ondas de choque (p. 10) -->
+    <div class="pagina conteudo" id="ondas-choque">
+        <span class="page-number">10</span>
+        <h2>6 Ondas de Choque e Regime Supersônico</h2>
+        <p>Quando \(v_F \ge v\), o comportamento da onda muda qualitativamente. Se \(v_F=v\), forma-se a barreira do som: as frentes se acumulam à frente da fonte, gerando uma parede de alta pressão. Se \(v_F>v\), as frentes ficam para trás e se superpõem formando o cone de Mach. O ângulo do cone é dado por:</p>
+        <div class="formula">\[ \operatorname{sen}\theta=\frac{v}{v_F}=\frac{1}{M} \]</div>
+        <p>em que \(M=v_F/v\) é o número de Mach e \(\theta\) é o semiângulo do cone de Mach. Quando o cone atinge o solo, a variação abrupta de pressão produz o estouro sônico, capaz de quebrar vidraças e abalar estruturas.</p>
+    </div>
+
+    <!-- 7 Considerações finais (p. 11) -->
+    <div class="pagina conteudo" id="consideracoes">
+        <span class="page-number">11</span>
+        <h2>7 Considerações Finais</h2>
+        <p>Este documento reuniu os principais conceitos da acústica e do efeito Doppler. A aplicação correta das equações exige atenção às condições do meio, à geometria do problema e, em especial, à convenção de sinais. Para cursos de arquitetura, a seção sobre reverberação é particularmente relevante; para meteorologia, a refração; para engenharia aeroespacial, o cone de Mach. Espero que o material sirva como ponto de partida para estudos mais aprofundados e para a resolução de problemas práticos.</p>
+    </div>
+
+    <!-- Referências (p. 12) -->
+    <div class="pagina conteudo referencias" id="referencias">
+        <span class="page-number">12</span>
+        <h2>Referências</h2>
+        <p>EVEREST, F. A. <strong>Master Handbook of Acoustics</strong>. 4. ed. New York: McGraw-Hill, 2001.</p>
+        <p>HALLIDAY, D.; RESNICK, R.; WALKER, J. <strong>Fundamentos de Física: Gravitação, Ondas e Termodinâmica</strong>. 10. ed. Rio de Janeiro: LTC, 2016.</p>
+        <p>KINSLER, L. E. et al. <strong>Fundamentals of Acoustics</strong>. 4. ed. New York: Wiley, 2000.</p>
+        <p>TIPLER, P. A.; MOSCA, G. <strong>Física para Cientistas e Engenheiros: Mecânica, Oscilações e Ondas, Termodinâmica</strong>. 6. ed. Rio de Janeiro: LTC, 2009.</p>
+    </div>
+
+</body>
+</html>
