@@ -3,31 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABNT - Acústica e Efeito Doppler</title>
-
-    <!-- MathJax para renderizar as fórmulas -->
-    <script>
-    MathJax = {
-        tex: {
-            inlineMath: [['\\(', '\\)']],
-            displayMath: [['\\[', '\\]']]
-        }
-    };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+    <title>ABNT - Juventude em Risco</title>
     <style>
-        /* ===== CONFIGURAÇÕES GERAIS ABNT ===== */
-        @page {
-            size: A4;
-            margin: 0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @page { size: A4; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: #e0e0e0;
@@ -50,10 +29,7 @@
             page-break-after: always;
             position: relative;
         }
-
-        .pagina:last-child {
-            page-break-after: auto;
-        }
+        .pagina:last-child { page-break-after: auto; }
 
         .page-number {
             position: absolute;
@@ -65,413 +41,399 @@
 
         /* ===== CAPA ===== */
         .capa {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             text-align: center;
         }
-        .capa .instituicao {
-            font-weight: bold;
-            font-size: 14pt;
-            margin-bottom: 2em;
-        }
-        .capa .autor {
-            font-weight: bold;
-            font-size: 12pt;
-            margin-bottom: 3em;
-        }
+        .capa .instituicao { font-weight: bold; font-size: 14pt; margin-bottom: 2em; }
+        .capa .autor { font-weight: bold; font-size: 12pt; margin-bottom: 3em; }
         .capa .titulo {
-            font-weight: bold;
-            font-size: 14pt;
-            text-transform: uppercase;
-            margin-bottom: 3em;
+            font-weight: bold; font-size: 14pt;
+            text-transform: uppercase; margin-bottom: 3em;
         }
-        .capa .cidade {
-            font-size: 12pt;
-            margin-top: 6em;
-        }
+        .capa .cidade { font-size: 12pt; margin-top: 6em; }
 
         /* ===== FOLHA DE ROSTO ===== */
         .folharosto {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            text-align: left;
+            display: flex; flex-direction: column;
+            justify-content: flex-start; text-align: left;
         }
         .folharosto .autor {
-            font-weight: bold;
-            font-size: 12pt;
-            margin-bottom: 2em;
-            text-align: center;
+            font-weight: bold; font-size: 12pt;
+            margin-bottom: 2em; text-align: center;
         }
         .folharosto .titulo {
-            font-weight: bold;
-            font-size: 14pt;
-            text-transform: uppercase;
-            margin-bottom: 2em;
+            font-weight: bold; font-size: 14pt;
+            text-transform: uppercase; margin-bottom: 2em;
             text-align: center;
         }
         .folharosto .natureza {
-            font-size: 12pt;
-            text-align: justify;
-            margin-bottom: 2em;
-            margin-left: 4.5cm;
-            margin-right: 0;
-            text-indent: 0;
+            font-size: 12pt; text-align: justify;
+            margin-bottom: 2em; margin-left: 4.5cm;
+            margin-right: 0; text-indent: 0;
         }
         .folharosto .orientador {
-            font-size: 12pt;
-            text-align: right;
-            margin-left: 0;
-            text-indent: 0;
-            margin-bottom: 2em;
+            font-size: 12pt; text-align: right;
+            margin-left: 0; text-indent: 0; margin-bottom: 2em;
         }
         .folharosto .cidade {
-            font-size: 12pt;
-            margin-top: 6em;
-            text-align: center;
+            font-size: 12pt; margin-top: 6em; text-align: center;
+        }
+
+        /* ===== RESUMO ===== */
+        .resumo h1 {
+            text-align: center; font-size: 12pt;
+            text-transform: uppercase; margin-bottom: 1.5em;
+            font-weight: bold;
+        }
+        .resumo .texto-resumo {
+            text-align: justify; text-indent: 0;
+            line-height: 1.0; font-size: 12pt;
+            margin-bottom: 1.5em;
+        }
+        .resumo .palavras-chave {
+            text-align: justify; text-indent: 0;
+            line-height: 1.0; font-size: 12pt;
         }
 
         /* ===== SUMÁRIO ===== */
         .sumario h1 {
-            text-align: center;
-            font-size: 12pt;
-            text-transform: uppercase;
-            margin-bottom: 1.5em;
+            text-align: center; font-size: 12pt;
+            text-transform: uppercase; margin-bottom: 1.5em;
             font-weight: bold;
         }
-        .sumario ul {
-            list-style: none;
-            padding-left: 0;
-        }
+        .sumario ul { list-style: none; padding-left: 0; }
         .sumario li {
-            font-size: 12pt;
-            margin-bottom: 0.25em;
-            text-indent: 0;
-            text-align: left;
+            font-size: 12pt; margin-bottom: 0.25em;
+            text-indent: 0; text-align: left;
         }
-        .sumario li.primaria {
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        .sumario li.secundaria {
-            font-weight: normal;
-            text-transform: none;
-            padding-left: 0.75cm;
-        }
-        .sumario .item {
-            display: flex;
-            align-items: baseline;
-        }
-        .sumario .item .titulo {
-            flex: 0 0 auto;
-        }
+        .sumario li.primaria { font-weight: bold; text-transform: uppercase; }
+        .sumario li.secundaria { font-weight: normal; text-transform: none; padding-left: 0.75cm; }
+        .sumario .item { display: flex; align-items: baseline; }
+        .sumario .item .titulo { flex: 0 0 auto; }
         .sumario .item .dots {
-            flex: 1 1 auto;
-            border-bottom: 1px dotted #000;
-            margin: 0 0.5em;
-            transform: translateY(-0.2em);
+            flex: 1 1 auto; border-bottom: 1px dotted #000;
+            margin: 0 0.5em; transform: translateY(-0.2em);
         }
-        .sumario .item .numero {
-            flex: 0 0 auto;
-        }
+        .sumario .item .numero { flex: 0 0 auto; }
 
         /* ===== CONTEÚDO ===== */
         .conteudo {
-            font-family: Arial, sans-serif;
-            font-size: 12pt;
-            line-height: 1.5;
-            color: #000;
+            font-family: Arial, sans-serif; font-size: 12pt;
+            line-height: 1.5; color: #000;
         }
         .conteudo h2 {
-            font-size: 12pt;
-            text-transform: uppercase;
-            margin-top: 1.5em;
-            margin-bottom: 1.5em;
-            text-align: left;
-            font-weight: bold;
+            font-size: 12pt; text-transform: uppercase;
+            margin-top: 1.5em; margin-bottom: 1.5em;
+            text-align: left; font-weight: bold;
         }
         .conteudo h3 {
-            font-size: 12pt;
-            margin-top: 1.5em;
-            margin-bottom: 1em;
-            text-align: left;
-            font-weight: bold;
-            text-transform: none;
+            font-size: 12pt; margin-top: 1.5em;
+            margin-bottom: 1em; text-align: left;
+            font-weight: bold; text-transform: none;
         }
         .conteudo p {
-            text-indent: 1.25cm;
-            text-align: justify;
+            text-indent: 1.25cm; text-align: justify;
             margin-bottom: 0.75em;
         }
-        .conteudo p.formula,
-        .conteudo div.formula {
-            text-indent: 0;
+
+        /* ===== FIGURAS ===== */
+        .figura {
             text-align: center;
-            margin: 1em 0;
+            margin: 1.2em 0 1.5em 0;
+            page-break-inside: avoid;
+        }
+        .figura img {
+            max-width: 100%;
+            max-height: 9cm;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .figura figcaption {
+            font-size: 10pt;
+            line-height: 1.2;
+            margin-top: 0.4em;
+            text-align: center;
+            text-indent: 0;
+            color: #000;
+        }
+        .figura figcaption .fonte {
+            display: block;
+            font-size: 10pt;
+            margin-top: 0.15em;
         }
 
-        /* Referências */
-        .conteudo .referencias h2 {
-            text-align: center;
-            margin-bottom: 1em;
-        }
+        /* ===== REFERÊNCIAS ===== */
+        .conteudo .referencias h2 { margin-bottom: 1em; }
         .conteudo .referencias p {
-            text-indent: 0;
-            margin-left: 0;
-            text-align: left;
-            line-height: 1.0;
+            text-indent: 0; margin-left: 0;
+            text-align: left; line-height: 1.0;
             margin-bottom: 1em;
+            font-size: 12pt;
         }
-        .conteudo .referencias strong {
-            font-weight: bold;
-        }
+        .conteudo .referencias strong { font-weight: bold; }
+        .conteudo .referencias em { font-style: italic; }
 
-        /* Impressão */
+        /* ===== IMPRESSÃO ===== */
         @media print {
-            body {
-                background: none;
-            }
-            .pagina {
-                box-shadow: none;
-                margin: 0;
-            }
+            body { background: none; }
+            .pagina { box-shadow: none; margin: 0; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CAPA (não conta, sem número) -->
-    <div class="pagina capa">
-        <p class="instituicao">COLÉGIO UNICULTURA</p>
-        <p class="autor">
-            Daniel Augustus Gomes Barbosa<br>
-            Felipe Marcellus Cunha Ribeiro<br>
-            João Vitor Lourenço da Silva<br>
-            Nicolas Enzo Aoki<br>
-            Nicola Soares Leite<br>
-            Wendy Luiggi Correia
-        </p>
-        <h1 class="titulo">Acústica e Efeito Doppler:<br>Fundamentos e Aplicações</h1>
-        <p class="cidade">Guarulhos<br>2026</p>
-    </div>
+<!-- ============ CAPA ============ -->
+<div class="pagina capa">
+    <p class="instituicao">COLÉGIO UNICULTURA</p>
+    <p class="autor">
+        Daniel Augustus Gomes Barbosa<br>
+        Felipe Marcellus Cunha Ribeiro<br>
+        João Vitor Lourenço da Silva<br>
+        Nicolas Enzo Aoki<br>
+        Nicola Soares Leite<br>
+        Wendy Luiggi Correia
+    </p>
+    <h1 class="titulo">Juventude em Risco:<br>Álcool, Cigarro Eletrônico, Pod e Narguilé</h1>
+    <p class="cidade">Guarulhos<br>2026</p>
+</div>
 
-    <!-- FOLHA DE ROSTO (p. 1, sem número) -->
-    <div class="pagina folharosto">
-        <p class="autor">
-            Daniel Augustus Gomes Barbosa<br>
-            Felipe Marcellus Cunha Ribeiro<br>
-            João Vitor Lourenço da Silva<br>
-            Nicolas Enzo Aoki<br>
-            Nicola Soares Leite<br>
-            Wendy Luiggi Correia
-        </p>
-        <h1 class="titulo">Acústica e Efeito Doppler:<br>Fundamentos e Aplicações</h1>
-        <p class="natureza">Trabalho apresentado ao Colégio Unicultura, como requisito parcial para avaliação na disciplina de Física, sob orientação do Prof. Caio.</p>
-        <p class="orientador">Orientador: Prof. Caio</p>
-        <p class="cidade">Guarulhos<br>2026</p>
-    </div>
+<!-- ============ FOLHA DE ROSTO (p. 1) ============ -->
+<div class="pagina folharosto">
+    <p class="autor">
+        Daniel Augustus Gomes Barbosa<br>
+        Felipe Marcellus Cunha Ribeiro<br>
+        João Vitor Lourenço da Silva<br>
+        Nicolas Enzo Aoki<br>
+        Nicola Soares Leite<br>
+        Wendy Luiggi Correia
+    </p>
+    <h1 class="titulo">Juventude em Risco:<br>Álcool, Cigarro Eletrônico, Pod e Narguilé</h1>
+    <p class="natureza">Trabalho apresentado ao Colégio Unicultura, como requisito parcial para avaliação na disciplina de Educação Física, sob orientação do Prof. Marco Duran.</p>
+    <p class="orientador">Orientador: Prof. Marco Duran</p>
+    <p class="cidade">Guarulhos<br>2026</p>
+</div>
 
-    <!-- SUMÁRIO (p. 2, sem número) -->
-    <div class="pagina sumario">
-        <h1>Sumário</h1>
-        <ul>
-            <li class="item primaria">
-                <span class="titulo">1 Introdução</span>
-                <span class="dots"></span>
-                <span class="numero">3</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">2 A Natureza da Onda Sonora</span>
-                <span class="dots"></span>
-                <span class="numero">4</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">3 Velocidade de Propagação</span>
-                <span class="dots"></span>
-                <span class="numero">5</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">4 Fenômenos Sonoros Fundamentais</span>
-                <span class="dots"></span>
-                <span class="numero">6</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">4.1 Reflexão: eco e reverberação</span>
-                <span class="dots"></span>
-                <span class="numero">6</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">4.2 Refração acústica e gradientes térmicos</span>
-                <span class="dots"></span>
-                <span class="numero">6</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">4.3 Difração e o princípio de Huygens</span>
-                <span class="dots"></span>
-                <span class="numero">7</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">4.4 Interferência e batimento</span>
-                <span class="dots"></span>
-                <span class="numero">7</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">4.5 Ressonância e modos normais</span>
-                <span class="dots"></span>
-                <span class="numero">7</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">5 Efeito Doppler</span>
-                <span class="dots"></span>
-                <span class="numero">8</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">5.1 Dedução cinemática</span>
-                <span class="dots"></span>
-                <span class="numero">8</span>
-            </li>
-            <li class="item secundaria">
-                <span class="titulo">5.2 Equação geral e convenção de sinais</span>
-                <span class="dots"></span>
-                <span class="numero">9</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">6 Ondas de Choque e Regime Supersônico</span>
-                <span class="dots"></span>
-                <span class="numero">10</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">7 Considerações Finais</span>
-                <span class="dots"></span>
-                <span class="numero">11</span>
-            </li>
-            <li class="item primaria">
-                <span class="titulo">Referências</span>
-                <span class="dots"></span>
-                <span class="numero">12</span>
-            </li>
-        </ul>
-    </div>
+<!-- ============ RESUMO (p. 2) ============ -->
+<div class="pagina resumo">
+    <h1>Resumo</h1>
+    <p class="texto-resumo">Este documento aborda o consumo de álcool, cigarros eletrônicos, pods e narguilé entre adolescentes. Parte-se de uma indagação recorrente: por que práticas tão nocivas circulam com tanta naturalidade entre jovens? A partir dela, examinam-se fatores psicossociais que favorecem a experimentação precoce, o peso das redes sociais na banalização desses usos e os efeitos fisiológicos dessas substâncias sobre os sistemas cardiovascular e respiratório. Discute-se, ainda, o impacto no rendimento esportivo e na recuperação física. A argumentação se apoia em literatura de saúde coletiva (INCA, 2016; SILVA; MOREIRA, 2022; OMS, 2023; CDC, 2020), confronta mitos frequentes no imaginário juvenil e sugere caminhos de prevenção e acolhimento clínico. Ao final, sustenta-se que a transformação desses produtos em mercadoria e a glamourização cultural do risco tendem a encobrir uma dependência química e biológica que começa cedo.</p>
+    <p class="palavras-chave"><strong>Palavras-chave:</strong> Adolescência. Vape. Dependência nicotínica. Consumo de álcool. Desempenho esportivo.</p>
+</div>
 
-    <!-- ============ CONTEÚDO (numerado a partir da p. 3) ============ -->
+<!-- ============ SUMÁRIO (p. 3) ============ -->
+<div class="pagina sumario">
+    <h1>Sumário</h1>
+    <ul>
+        <li class="item primaria"><span class="titulo">1 Introdução</span><span class="dots"></span><span class="numero">4</span></li>
+        <li class="item primaria"><span class="titulo">2 Desenvolvimento</span><span class="dots"></span><span class="numero">5</span></li>
+        <li class="item secundaria"><span class="titulo">2.1 Definições e conceitos</span><span class="dots"></span><span class="numero">5</span></li>
+        <li class="item secundaria"><span class="titulo">2.2 Química das substâncias e mecanismo de dependência</span><span class="dots"></span><span class="numero">6</span></li>
+        <li class="item secundaria"><span class="titulo">2.3 Impactos fisiológicos nos sistemas respiratório e cardiovascular</span><span class="dots"></span><span class="numero">7</span></li>
+        <li class="item secundaria"><span class="titulo">2.4 Relação com a atividade física e o desempenho esportivo</span><span class="dots"></span><span class="numero">8</span></li>
+        <li class="item secundaria"><span class="titulo">2.5 Contexto sociocultural: glamourização e pressão de grupo</span><span class="dots"></span><span class="numero">9</span></li>
+        <li class="item secundaria"><span class="titulo">2.6 Prevenção e formas de buscar ajuda</span><span class="dots"></span><span class="numero">10</span></li>
+        <li class="item primaria"><span class="titulo">3 Investigação: Mitos x Realidade</span><span class="dots"></span><span class="numero">11</span></li>
+        <li class="item primaria"><span class="titulo">4 Dados, Gráficos e Imagens</span><span class="dots"></span><span class="numero">12</span></li>
+        <li class="item primaria"><span class="titulo">5 Reflexão sobre o Tema</span><span class="dots"></span><span class="numero">14</span></li>
+        <li class="item primaria"><span class="titulo">6 Conclusão</span><span class="dots"></span><span class="numero">15</span></li>
+        <li class="item primaria"><span class="titulo">7 Referências</span><span class="dots"></span><span class="numero">16</span></li>
+    </ul>
+</div>
 
-    <!-- 1 Introdução (p. 3) -->
-    <div class="pagina conteudo" id="introducao">
-        <span class="page-number">3</span>
-        <h2>1 Introdução</h2>
-        <p>Este documento reúne os conceitos fundamentais da acústica e do efeito Doppler, com ênfase na interpretação física dos fenômenos e na aplicação correta das equações. A experiência docente mostra que a maior dificuldade dos estudantes não está na manipulação algébrica, mas na compreensão do que cada grandeza representa e de como as condições do meio alteram o comportamento da onda. Por isso, procuro aqui combinar rigor formal com explicações que privilegiam o entendimento conceitual.</p>
-    </div>
+<!-- ============ 1 INTRODUÇÃO (p. 4) ============ -->
+<div class="pagina conteudo" id="introducao">
+    <span class="page-number">4</span>
+    <h2>1 Introdução</h2>
+    <p>A adolescência é uma fase de transição marcada por mudanças biológicas, cognitivas e sociais intensas. Nesse período, o jovem busca autonomia, precisa pertencer a grupos e tende a explorar novidades. Essa combinação o torna particularmente vulnerável a comportamentos de risco. Entre eles, chama atenção o consumo precoce de álcool e de novas tecnologias de entrega de nicotina, como vapes, pods e o narguilé tradicional.</p>
+    <p>A experimentação costuma ser facilitada por estratégias de marketing agressivas. Designs modernos, sabores adocicados e a presença de influenciadores digitais reduzem a percepção de perigo — fenômeno já documentado em relatórios da OMS (2023) sobre a indústria do tabaco. Este trabalho procura analisar o que são esses dispositivos, como a dependência química se instala no cérebro em desenvolvimento e quais reflexos negativos aparecem, de imediato ou mais tarde, na saúde e no desempenho físico dos jovens. Também são discutidos caminhos possíveis de prevenção e conscientização.</p>
+</div>
 
-    <!-- 2 A natureza da onda sonora (p. 4) -->
-    <div class="pagina conteudo" id="natureza">
-        <span class="page-number">4</span>
-        <h2>2 A Natureza da Onda Sonora</h2>
-        <p>O som é uma onda mecânica. Necessita, portanto, de um meio material — sólido, líquido ou gasoso — para se propagar, sendo incapaz de atravessar o vácuo. Trata-se de uma onda longitudinal: a vibração das partículas do meio ocorre na mesma direção em que a onda se desloca. Esse movimento produz ciclos alternados de compressão (regiões de alta pressão e maior densidade de partículas) e rarefação (regiões de baixa pressão e menor densidade).</p>
-    </div>
+<!-- ============ 2 DESENVOLVIMENTO + 2.1 (p. 5) ============ -->
+<div class="pagina conteudo" id="desenvolvimento1">
+    <span class="page-number">5</span>
+    <h2>2 Desenvolvimento</h2>
 
-    <!-- 3 Velocidade de propagação (p. 5) -->
-    <div class="pagina conteudo" id="velocidade">
-        <span class="page-number">5</span>
-        <h2>3 Velocidade de Propagação</h2>
-        <p>A velocidade do som depende das propriedades elásticas e inerciais do meio. Para fluidos e gases, uma expressão adequada é:</p>
-        <div class="formula">\[ v=\sqrt{\frac{K}{\rho}} \]</div>
-        <p>em que \(K\) é o módulo de elasticidade volumétrico e \(\rho\) é a densidade. Em sólidos, a expressão depende da geometria do corpo. Para uma barra fina, por exemplo, usa-se:</p>
-        <div class="formula">\[ v=\sqrt{\frac{E}{\rho}} \]</div>
-        <p>em que \(E\) é o módulo de Young. Para um sólido extenso, uma forma mais geral é:</p>
-        <div class="formula">\[ v=\sqrt{\frac{K+\frac{4}{3}G}{\rho}} \]</div>
-        <p>em que \(G\) é o módulo de cisalhamento. Em qualquer caso, como consequência geral, o som se propaga mais rapidamente em sólidos, de forma intermediária em líquidos e mais lentamente em gases.</p>
-        <p>Nos gases, a temperatura absoluta exerce forte influência. Para o ar atmosférico, uma aproximação linear amplamente utilizada é:</p>
-        <div class="formula">\[ v \approx 331{,}5+0{,}6\cdot T_C \]</div>
-        <p>A \(20^{\circ}\text{C}\), obtém-se \(v \approx 343\ \text{m/s}\). Vale notar que essa aproximação é válida para intervalos moderados de temperatura; em condições extremas, efeitos de umidade e composição do ar podem exigir correções.</p>
-    </div>
+    <h3>2.1 Definições e conceitos</h3>
+    <p>Os cigarros eletrônicos — os vapes, como todo mundo chama — funcionam com uma bateria pequena que alimenta um atomizador. Esse atomizador esquenta um líquido de composição variável: solventes, aromatizantes e, quase sempre, nicotina. O que sai do dispositivo é um aerossol fino, inalado pelo usuário. Muita gente chama de vapor, mas a palavra é imprecisa: não é água evaporada, é uma mistura de partículas que carrega o que estava no líquido. Os pods são modelos compactos, com sistemas fechados ou cartuchos recarregáveis. A diferença central está no uso de sais de nicotina, os chamados <em>nic salts</em>, que permitem absorção pulmonar mais rápida e concentrações elevadas da droga sem provocar a irritação imediata na garganta típica do cigarro convencional (SILVA; MOREIRA, 2022). O ácido benzoico, presente nessa formulação, protona a nicotina e favorece esse efeito.</p>
+    <p>O narguilé, por sua vez, é um cachimbo de água de origem oriental. Nele, o tabaco aromatizado é aquecido por carvão, e a fumaça passa por um filtro de água antes de ser aspirada pela mangueira. Já o consumo de álcool na adolescência refere-se à ingestão de bebidas antes da maioridade civil e da maturação completa do sistema nervoso central. Com frequência, aparece associado ao consumo episódico excessivo, o <em>binge drinking</em>.</p>
 
-    <!-- 4 Fenômenos sonoros fundamentais - parte 1 (p. 6) -->
-    <div class="pagina conteudo" id="fenomenos1">
-        <span class="page-number">6</span>
-        <h2>4 Fenômenos Sonoros Fundamentais</h2>
+    <figure class="figura">
+        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_135136006_lraycw.png" alt="Comparação entre cigarro convencional, vape, pod e narguilé">
+        <figcaption>
+            Figura 1 – Comparação entre cigarro convencional, vape, pod e narguilé.
+            <span class="fonte">Fonte: elaborado pelos autores (2026).</span>
+        </figcaption>
+    </figure>
+</div>
 
-        <h3>4.1 Reflexão: eco e reverberação</h3>
-        <p>A reflexão ocorre quando a onda sonora encontra uma superfície cuja impedância acústica difere significativamente daquela do meio em que vinha se propagando. Parte da energia retorna ao meio de origem. O cérebro humano possui persistência auditiva de aproximadamente \(0{,}1\ \text{s}\). Se dois sons idênticos atingem o ouvido em intervalo inferior a esse valor, são interpretados como um único som prolongado.</p>
-        <p>Para que haja eco nítido, o som refletido deve retornar após o término da persistência auditiva (\(\Delta t \ge 0{,}1\ \text{s}\)). Com \(v=340\ \text{m/s}\), a distância total percorrida é \(34\ \text{m}\), e a distância mínima ao obstáculo é \(17\ \text{m}\). Abaixo disso, ocorre reverberação — sensação de prolongamento do som original. Esse fenômeno é decisivo no projeto acústico de teatros, auditórios e estúdios (Everest, 2001).</p>
+<!-- ============ 2.2 (p. 6) ============ -->
+<div class="pagina conteudo" id="desenvolvimento2">
+    <span class="page-number">6</span>
+    <h3>2.2 Química das substâncias e mecanismo de dependência</h3>
+    <p>O aerossol dos dispositivos eletrônicos e a fumaça do narguilé contêm substâncias bastante nocivas. Entre elas estão propilenoglicol, glicerina vegetal, metais pesados como níquel, chumbo e cádmio — que podem vir da quebra da resistência —, compostos orgânicos voláteis e substâncias cancerígenas geradas pelo superaquecimento dos aromatizantes artificiais (INCA, 2016; SILVA; MOREIRA, 2022).</p>
+    <p>A nicotina age nos receptores nicotínicos de acetilcolina no cérebro e estimula a liberação de dopamina nas vias de recompensa. No adolescente, o cérebro ainda passa por poda sináptica e formação do córtex pré-frontal, responsável pelo controle de impulsos e pelo julgamento. Essa plasticidade neural acelerada faz com que os circuitos de dependência se estabeleçam com velocidade e intensidade maiores do que em adultos (SBP, 2022 <em>apud</em> ACT, 2024). Quando a substância falta, aparecem crises de abstinência importantes, com ansiedade, irritabilidade e déficit de atenção.</p>
 
-        <h3>4.2 Refração acústica e gradientes térmicos</h3>
-        <p>A refração consiste na alteração da velocidade de propagação devido à mudança de propriedades do meio. Na atmosfera, gradientes de temperatura desviam a trajetória do som. Durante o dia, o solo aquecido aquece as camadas inferiores de ar, onde o som é mais rápido; a onda sofre deflexão para cima, limitando o alcance ao nível do solo. À noite, o solo esfria rapidamente, as camadas inferiores ficam mais frias e o som curva-se para baixo. Por isso, sons distantes são ouvidos com mais clareza à noite.</p>
-    </div>
+    <figure class="figura">
+        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_135413808_vxunfr.png" alt="Esquema interno de um cigarro eletrônico (vape)">
+        <figcaption>
+            Figura 2 – Funcionamento interno de um cigarro eletrônico.
+            <span class="fonte">Fonte: elaborado pelos autores (2026).</span>
+        </figcaption>
+    </figure>
+</div>
 
-    <!-- 4 Fenômenos sonoros fundamentais - parte 2 (p. 7) -->
-    <div class="pagina conteudo" id="fenomenos2">
-        <span class="page-number">7</span>
+<!-- ============ 2.3 (p. 7) ============ -->
+<div class="pagina conteudo" id="desenvolvimento3">
+    <span class="page-number">7</span>
+    <h3>2.3 Impactos fisiológicos nos sistemas respiratório e cardiovascular</h3>
+    <p>O uso crônico ou agudo desses produtos compromete órgãos vitais. No sistema respiratório, a inalação de partículas finas causa inflamação nos bronquíolos e alvéolos. O uso de vapes e pods está associado à EVALI — <em>E-cigarette or Vaping Product Use-Associated Lung Injury</em> —, lesão pulmonar aguda potencialmente fatal, definida pelo CDC (2020) como categoria guarda-chuva para todas as lesões pulmonares relacionadas a cigarros eletrônicos. Nos surtos investigados, houve forte associação com acetato de vitamina E em cartuchos de THC, o que não elimina o risco de outras formulações.</p>
+    <p>Sobre a bronquiolite obliterante, conhecida como "pulmão de pipoca", é preciso cautela. A associação documentada refere-se à inalação de diacetil, flavorizante usado em alguns líquidos, e não a todos os vaporizadores do mercado (AMERICAN LUNG ASSOCIATION, 2023). Trata-se de risco relevante, mas não de consequência universal e automática de qualquer vape — generalização que a literatura não sustenta.</p>
+    <p>No sistema cardiovascular, a nicotina provoca vasoconstrição imediata, eleva a frequência cardíaca e aumenta a pressão arterial. O coração passa a trabalhar sob sobrecarga, e o enrijecimento arterial tende a ser antecipado (AHA, 2022). O consumo agudo de álcool, por sua vez, pode provocar disritmias e miocardiopatias.</p>
 
-        <h3>4.3 Difração e o princípio de Huygens</h3>
-        <p>A difração é a capacidade da onda de contornar obstáculos ou expandir-se ao atravessar aberturas. Pelo princípio de Huygens, cada ponto de uma frente de onda age como nova fonte de ondas esféricas. A eficiência depende da relação entre \(\lambda\) e \(d\): é significativa quando \(\lambda \gtrsim d\); didaticamente, pode-se dizer que é máxima quando \(\lambda \approx d\) ou \(\lambda > d\). O espectro audível vai de \(20\ \text{Hz}\) a \(20.000\ \text{Hz}\), com \(\lambda\) entre \(17\ \text{m}\) e \(1{,}7\ \text{cm}\). Como objetos cotidianos têm dimensões nessa faixa, as ondas graves contornam obstáculos com facilidade — daí a possibilidade de ouvir uma conversa através de uma porta aberta.</p>
+    <figure class="figura">
+        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_135545647_tjuzem.png" alt="Comparação entre pulmão saudável e pulmão lesionado por EVALI">
+        <figcaption>
+            Figura 3 – Comparação entre pulmão saudável e pulmão lesionado por EVALI.
+            <span class="fonte">Fonte: elaborado pelos autores (2026).</span>
+        </figcaption>
+    </figure>
+</div>
 
-        <h3>4.4 Interferência e batimento</h3>
-        <p>Quando duas ou mais fontes emitem simultaneamente, as pressões acústicas se somam algebricamente (princípio da superposição). Na interferência construtiva, as frentes estão em fase e a amplitude aumenta. Na destrutiva, estão em oposição de fase e as variações de pressão se cancelam; se as amplitudes forem idênticas, há silêncio. Para frequências ligeiramente diferentes, \(f_1 \approx f_2\), surge o batimento:</p>
-        <div class="formula">\[ f_{\text{batimento}}=|f_1-f_2| \]</div>
+<!-- ============ 2.4 (p. 8) ============ -->
+<div class="pagina conteudo" id="desenvolvimento4">
+    <span class="page-number">8</span>
+    <h3>2.4 Relação com a atividade física e o desempenho esportivo</h3>
+    <p>A prática esportiva exige transporte eficiente de oxigênio e boa regeneração celular. Álcool e nicotina atrapalham justamente esses processos, por mecanismos distintos. No narguilé, a combustão do tabaco e do carvão gera monóxido de carbono, que se liga à hemoglobina com mais força que o oxigênio e forma carboxihemoglobina. O resultado imediato é perda de fôlego, fadiga precoce e redução do VO₂ máximo. Nos vapes, não há combustão no mesmo sentido; o prejuízo ao desempenho tende a vir de outros caminhos — inflamação das vias aéreas, vasoconstrição induzida pela nicotina e irritação epitelial —, e não da formação de carboxihemoglobina. Essa distinção importa para não atribuir ao vape um mecanismo que é próprio da queima.</p>
+    <p>Uma revisão sistemática sobre recuperação após exercícios resistidos aponta que o consumo de álcool pode aumentar o cortisol e, ao mesmo tempo, reduzir a disponibilidade de aminoácidos no plasma e a taxa de síntese proteica muscular — efeito que os autores associam à supressão da via mTORC1 (LAKICEVIC et al., 2019). Há outros agravantes. O álcool tem efeito diurético e, por isso, desidrata. A desidratação, por sua vez, aumenta a chance de cãibras, reduz a contratilidade muscular e mexe com tempo de reação, coordenação e equilíbrio — e esses prejuízos podem durar até 24 horas depois da ingestão.</p>
+</div>
 
-        <h3>4.5 Ressonância e modos normais</h3>
-        <p>Todo sistema físico possui frequências naturais de oscilação. Quando estimulado por uma força periódica com frequência igual a uma dessas frequências naturais, o sistema absorve energia de forma altamente eficiente, e a amplitude cresce. Esse é o princípio da ressonância, que tanto pode amplificar o som — como na caixa de um violão — quanto causar danos a estruturas mecânicas.</p>
-    </div>
+<!-- ============ 2.5 (p. 9) ============ -->
+<div class="pagina conteudo" id="desenvolvimento5">
+    <span class="page-number">9</span>
+    <h3>2.5 Contexto sociocultural: glamourização e pressão de grupo</h3>
+    <p>O início do consumo raramente é uma decisão puramente individual. Na maioria das vezes, insere-se em uma rede de pressões sociais. Os adolescentes buscam nesses dispositivos e nas bebidas ferramentas de mediação social para demonstrar maturidade, status, rebeldia estética ou popularidade.</p>
+    <p>As plataformas digitais, como Instagram e TikTok, funcionam como amplificadores desse comportamento. Elas exibem recortes idealizados de festas e estilos de vida em que vape e álcool aparecem como sinônimos de sucesso e diversão. Essa banalização esconde as consequências biológicas e cria a falsa impressão de que tais hábitos seriam inofensivos e próprios da juventude moderna (OMS, 2023).</p>
 
-    <!-- 5 Efeito Doppler - parte 1 (p. 8) -->
-    <div class="pagina conteudo" id="doppler1">
-        <span class="page-number">8</span>
-        <h2>5 Efeito Doppler</h2>
-        <p>O efeito Doppler é a alteração da frequência percebida devido ao movimento relativo entre fonte e receptor.</p>
+    <figure class="figura">
+        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_140037821_zoiceh.png" alt="Exemplo de romantização do consumo de vape em redes sociais">
+        <figcaption>
+            Figura 4 – Exemplo de romantização do consumo em redes sociais.
+            <span class="fonte">Fonte: elaborado pelos autores (2026).</span>
+        </figcaption>
+    </figure>
+</div>
 
-        <h3>5.1 Dedução cinemática</h3>
-        <p>Considere uma fonte que emite som com período \(T\) e frequência \(f=1/T\). O som se propaga com velocidade \(v\).</p>
-        <p>Para uniformizar a notação, adoto desde já a convenção algébrica: traça-se uma linha de \(O\) para \(F\), definida como sentido positivo. Assim, \(v_O\) e \(v_F\) são componentes algébricas nessa direção. Quando a fonte se aproxima, \(v_F<0\); quando se afasta, \(v_F>0\). Quando o observador se aproxima, \(v_O>0\); quando se afasta, \(v_O<0\).</p>
+<!-- ============ 2.6 PREVENÇÃO (p. 10) ============ -->
+<div class="pagina conteudo" id="desenvolvimento6">
+    <span class="page-number">10</span>
+    <h3>2.6 Prevenção e formas de buscar ajuda</h3>
+    <p>A prevenção mais eficaz não passa pelo julgamento moral, mas pela informação qualificada e pelo acolhimento. A escola tem papel central ao promover o letramento científico: explicar o que são essas substâncias, como agem no corpo e quais são os riscos reais, sem alarmismo e sem romantização. Programas como o Saúde na Escola (PSE) aproximam a rede de saúde da comunidade escolar, oferecendo palestras, rodas de conversa e encaminhamento clínico.</p>
+    <p>Quando o adolescente já faz uso dessas substâncias e deseja ajuda, existem canais gratuitos e sigilosos. O Centro de Valorização da Vida (CVV), pelo telefone <strong>188</strong>, oferece apoio emocional 24 horas por dia. Os Centros de Atenção Psicossocial (CAPS) e as Unidades Básicas de Saúde (UBS) atendem casos de dependência química pelo Sistema Único de Saúde (SUS). Em situações de risco à vida, o Disque 100 (Direitos Humanos) e o SAMU 192 também podem ser acionados.</p>
+    <p>Para a família, o caminho mais produtivo é o diálogo sem punição prévia. Repreensões imediatas tendem a gerar isolamento e a reforçar o comportamento de risco, enquanto o acolhimento abre espaço para o jovem reconhecer o problema e buscar tratamento. O foco deve estar nos vínculos, na circulação de informação confiável e na construção conjunta de alternativas de lazer e pertencimento que não dependam da substância.</p>
 
-        <p><em>Fonte em movimento, observador estático:</em> o comprimento de onda aparente à frente da fonte é:</p>
-        <div class="formula">\[ \lambda_{\text{ap}}=\frac{v+v_F}{f} \]</div>
-        <p>Se \(v_F<0\), a fonte está se aproximando e \(\lambda_{\text{ap}}\) diminui. Se \(v_F>0\), a fonte está se afastando e \(\lambda_{\text{ap}}\) aumenta. A frequência aparente é:</p>
-        <div class="formula">\[ f_{\text{ap}}=\frac{v}{\lambda_{\text{ap}}}= f\left(\frac{v}{v+v_F}\right) \]</div>
+    <figure class="figura">
+        <img src="https://cvv.org.br/wp-content/uploads/2023/05/mapa-generigo-188-1.png" alt="Canais de apoio do CVV pelo telefone 188">
+        <figcaption>
+            Figura 5 – Canais de apoio e acolhimento ao adolescente (CVV – 188).
+            <span class="fonte">Fonte: CVV (2023).</span>
+        </figcaption>
+    </figure>
+</div>
 
-        <p><em>Observador em movimento, fonte estática:</em> o comprimento de onda não muda, mas a velocidade relativa de encontro é \(v'=v+v_O\). Assim:</p>
-        <div class="formula">\[ f_{\text{ap}}=f\left(\frac{v+v_O}{v}\right) \]</div>
-        <p>Se o observador se aproxima, \(v_O>0\) e a frequência aparente aumenta; se se afasta, \(v_O<0\) e a frequência diminui.</p>
-    </div>
+<!-- ============ 3 INVESTIGAÇÃO: MITOS X REALIDADE (p. 11) ============ -->
+<div class="pagina conteudo" id="mitos">
+    <span class="page-number">11</span>
+    <h2>3 Investigação: Mitos x Realidade</h2>
+    <p>Esta seção apresenta cinco afirmações comuns entre adolescentes sobre álcool, vape, pod e narguilé, confrontadas com a literatura científica disponível. A intenção é desmontar informações incorretas que circulam livremente em conversas e redes sociais.</p>
 
-    <!-- 5 Efeito Doppler - parte 2 (p. 9) -->
-    <div class="pagina conteudo" id="doppler2">
-        <span class="page-number">9</span>
+    <p><strong>Mito 1 — “O pod é menos prejudicial porque não é cigarro convencional.”</strong> Falso. Os pods usam sais de nicotina altamente concentrados. Segundo Silva e Moreira (2022), um único cartucho pode conter quantidade de nicotina equivalente à de um maço inteiro de cigarros comuns — cerca de 20 cigarros. Volumes maiores frequentemente citados em redes sociais referem-se a tanques abertos e dispositivos de alta capacidade, mas, ainda assim, o potencial de dependência é alto.</p>
 
-        <p>Caso se prefira trabalhar com módulos, basta escrever \(u_F\) para o módulo da velocidade da fonte em relação ao meio e usar, por exemplo, \(f_{\text{ap}}=f\left(\frac{v}{v-u_F}\right)\) quando a fonte se aproxima. A equação geral com componentes algébricas, porém, evita essa duplicação de fórmulas.</p>
+    <p><strong>Mito 2 — “O narguilé não faz mal porque a fumaça passa pela água.”</strong> Falso. A água apenas resfria a fumaça e torna a inalação mais suave; não filtra compostos tóxicos, metais pesados nem monóxido de carbono. Uma sessão de uma hora de narguilé pode equivaler à inalação da fumaça de 100 a 200 cigarros, conforme informe do INCA (2015) baseado em dados da OMS.</p>
 
-        <h3>5.2 Equação geral e convenção de sinais</h3>
-        <p>Combinando os casos:</p>
-        <div class="formula">\[ f_{\text{ap}}=f\left(\frac{v+v_O}{v+v_F}\right) \]</div>
-        <p>A convenção é a seguinte: traça-se uma linha de \(O\) para \(F\), definida como sentido positivo. Se o vetor velocidade do observador apontar nesse sentido, \(v_O\) é positivo; caso contrário, negativo. O mesmo vale para a fonte. Quando a fonte se aproxima, \(v_F\) é negativo e a frequência aparente aumenta; quando o observador se aproxima, \(v_O\) é positivo e a frequência também aumenta. Essa convenção costuma ser a principal fonte de erros, e recomendo que seja sempre explicitada no início da resolução de problemas.</p>
-    </div>
+    <p><strong>Mito 3 — “Beber apenas nos finais de semana não traz consequências.”</strong> Falso. O consumo concentrado de grandes volumes em pouco tempo, o <em>binge drinking</em>, afeta o desenvolvimento dos neurônios, eleva o risco de coma alcoólico e predispõe a comportamentos de risco e acidentes graves.</p>
 
-    <!-- 6 Ondas de choque (p. 10) -->
-    <div class="pagina conteudo" id="ondas-choque">
-        <span class="page-number">10</span>
-        <h2>6 Ondas de Choque e Regime Supersônico</h2>
-        <p>Quando \(v_F \ge v\), o comportamento da onda muda qualitativamente. Se \(v_F=v\), forma-se a barreira do som: as frentes se acumulam à frente da fonte, gerando uma parede de alta pressão. Se \(v_F>v\), as frentes ficam para trás e se superpõem formando o cone de Mach. O ângulo do cone é dado por:</p>
-        <div class="formula">\[ \operatorname{sen}\theta=\frac{v}{v_F}=\frac{1}{M} \]</div>
-        <p>em que \(M=v_F/v\) é o número de Mach e \(\theta\) é o semiângulo do cone de Mach. Quando o cone atinge o solo, a variação abrupta de pressão produz o estouro sônico, capaz de quebrar vidraças e abalar estruturas.</p>
-    </div>
+    <p><strong>Mito 4 — “Se eu sou atleta, o álcool não interfere no meu desempenho.”</strong> Falso. O álcool esgota os estoques de glicogênio muscular, desidrata o organismo e eleva os níveis de cortisol, hormônio do estresse. Com isso, reduz força, velocidade e capacidade de explosão (LAKICEVIC <em>et al.</em>, 2019).</p>
 
-    <!-- 7 Considerações finais (p. 11) -->
-    <div class="pagina conteudo" id="consideracoes">
-        <span class="page-number">11</span>
-        <h2>7 Considerações Finais</h2>
-        <p>Este documento reuniu os principais conceitos da acústica e do efeito Doppler. A aplicação correta das equações exige atenção às condições do meio, à geometria do problema e, em especial, à convenção de sinais. Para cursos de arquitetura, a seção sobre reverberação é particularmente relevante; para meteorologia, a refração; para engenharia aeroespacial, o cone de Mach. Espero que o material sirva como ponto de partida para estudos mais aprofundados e para a resolução de problemas práticos.</p>
-    </div>
+    <p><strong>Mito 5 — “Cigarros eletrônicos sem nicotina são totalmente inofensivos.”</strong> Falso. Mesmo sem nicotina, os solventes e os flavorizantes artificiais sofrem pirólise quando aquecidos e geram compostos carbonílicos, como formaldeído e acroleína, que agridem o tecido epitelial do pulmão (INCA, 2016). O formaldeído é classificado como carcinógeno do Grupo 1.</p>
 
-    <!-- Referências (p. 12) -->
-    <div class="pagina conteudo referencias" id="referencias">
-        <span class="page-number">12</span>
-        <h2>Referências</h2>
-        <p>EVEREST, F. A. <strong>Master Handbook of Acoustics</strong>. 4. ed. New York: McGraw-Hill, 2001.</p>
-        <p>HALLIDAY, D.; RESNICK, R.; WALKER, J. <strong>Fundamentos de Física: Gravitação, Ondas e Termodinâmica</strong>. 10. ed. Rio de Janeiro: LTC, 2016.</p>
-        <p>KINSLER, L. E. et al. <strong>Fundamentals of Acoustics</strong>. 4. ed. New York: Wiley, 2000.</p>
-        <p>TIPLER, P. A.; MOSCA, G. <strong>Física para Cientistas e Engenheiros: Mecânica, Oscilações e Ondas, Termodinâmica</strong>. 6. ed. Rio de Janeiro: LTC, 2009.</p>
-    </div>
+    <figure class="figura">
+        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_140434355_jsbl2o.png" alt="Quadro-resumo de mitos e realidades sobre álcool, vape, pod e narguilé">
+        <figcaption>
+            Quadro 1 – Mitos e realidades sobre álcool, vape, pod e narguilé.
+            <span class="fonte">Fonte: elaborado pelos autores (2026) com base em INCA (2015; 2016), Silva e Moreira (2022) e Lakicevic et al. (2019).</span>
+        </figcaption>
+    </figure>
+</div>
+
+<!-- ============ 4 DADOS, GRÁFICOS E IMAGENS (p. 12) ============ -->
+<div class="pagina conteudo" id="dados1">
+    <span class="page-number">12</span>
+    <h2>4 Dados, Gráficos e Imagens</h2>
+    <p>Os dados a seguir foram extraídos de fontes oficiais e permitem dimensionar a prevalência e a intensidade do consumo dessas substâncias entre adolescentes e jovens brasileiros. O primeiro gráfico apresenta dados da Pesquisa Nacional de Saúde do Escolar (PeNSE), conduzida pelo IBGE, que entrevistou estudantes do 9º ano do Ensino Fundamental em todo o país.</p>
+
+    <figure class="figura">
+        <img src="https://agenciadenoticias.ibge.gov.br/images/agenciadenoticias/estatisticas_sociais/2026_03/PENSE-2024_grafico1bdrthjurfgt.png" alt="Gráfico da PeNSE 2024 sobre uso de cigarros eletrônicos entre escolares brasileiros">
+        <figcaption>
+            Gráfico 1 – Prevalência do uso de cigarros eletrônicos entre escolares brasileiros (PeNSE 2024).
+            <span class="fonte">Fonte: IBGE (2024).</span>
+        </figcaption>
+    </figure>
+
+    <p>Os números reforçam uma tendência preocupante: o cigarro eletrônico deixou de ser uma curiosidade restrita a nichos e passou a circular com naturalidade entre adolescentes, inclusive dentro do ambiente escolar. Esse cenário dialoga diretamente com o que foi discutido na seção 2.5: quando o produto se torna visualmente comum, sua percepção de risco diminui.</p>
+</div>
+
+<!-- ============ 4 DADOS (cont. - p. 13) ============ -->
+<div class="pagina conteudo" id="dados2">
+    <span class="page-number">13</span>
+    <p>Além da prevalência, é importante comparar a concentração de nicotina entre os dispositivos disponíveis no mercado. O gráfico a seguir sintetiza essa comparação a partir de dados do INCA e de artigos científicos revisados por pares.</p>
+
+    <figure class="figura">
+        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_135839112_agjcbd.png" alt="Gráfico comparativo da concentração de nicotina entre cigarro, pod e narguilé">
+        <figcaption>
+            Gráfico 2 – Comparação da concentração de nicotina entre cigarro convencional, pod e uma sessão de narguilé.
+            <span class="fonte">Fonte: elaborado pelos autores (2026) com base em INCA (2015; 2016) e Silva e Moreira (2022).</span>
+        </figcaption>
+    </figure>
+
+    <p>A comparação evidencia que o argumento do “menos prejudicial” não se sustenta do ponto de vista da nicotina. Um único pod pode entregar ao organismo quantidade de nicotina equivalente à de um maço inteiro de cigarros, e uma sessão de narguilé pode superar esse valor várias vezes. Para o adolescente, cujo cérebro ainda está em formação, essa exposição precoce acelera a instalação da dependência.</p>
+</div>
+
+<!-- ============ 5 REFLEXÃO SOBRE O TEMA (p. 14) ============ -->
+<div class="pagina conteudo" id="reflexao">
+    <span class="page-number">14</span>
+    <h2>5 Reflexão sobre o Tema</h2>
+    <p>Por que algo que pode prejudicar a saúde é tantas vezes apresentado como diversão? A resposta passa pela construção mercadológica. A indústria do tabaco e do álcool percebeu, há algum tempo, que precisava mudar a embalagem. A fumaça densa e o cheiro de alcatrão, que afastavam parte do público, deram lugar a dispositivos pequenos, coloridos, com sabores frutados e aparência tecnológica. É um produto pensado para circular bem em foto e vídeo. E quando o risco aparece embrulhado em diversão, liberdade ou status, o instinto de autopreservação do adolescente perde força. O que era nocivo e viciante passa a parecer desejável, socialmente aceito, quase inofensivo (OMS, 2023).</p>
+    <p>Essa reflexão se conecta diretamente com a adolescência como fase de construção de identidade. O jovem não escolhe o vape apenas pelo sabor ou pela nicotina: escolhe o que ele representa — pertencimento, maturidade, estética. Enquanto a sociedade continuar associando esses produtos a esses valores, o simples ato de proibir tende a ser insuficiente. A prevenção real exige oferecer ao adolescente outras formas de pertencimento e de expressão que não dependam da substância.</p>
+    <p>Por fim, o trabalho reforça que a informação correta é uma ferramenta de liberdade. Quando o jovem entende o que está em jogo — o que o produto faz com o corpo, com o cérebro, com o próprio desempenho —, a decisão de recusar deixa de ser obediência e passa a ser escolha. E escolha consciente é o que mais se aproxima de liberdade de verdade.</p>
+</div>
+
+<!-- ============ 6 CONCLUSÃO (p. 15) ============ -->
+<div class="pagina conteudo" id="conclusao">
+    <span class="page-number">15</span>
+    <h2>6 Conclusão</h2>
+    <p>Este trabalho permitiu compreender que o consumo precoce de álcool, vapes, pods e narguilé entre adolescentes não é apenas uma escolha individual: é um fenômeno social atravessado por marketing, pressão de grupo, redes sociais e pela construção cultural do risco como diversão. Cada uma das substâncias analisadas — com mecanismos e formas de uso distintos — compartilha um mesmo núcleo problemático: a exposição precoce do sistema nervoso em formação a substâncias com alto potencial de dependência.</p>
+    <p>Do ponto de vista fisiológico, os efeitos sobre os sistemas respiratório e cardiovascular são reais e documentados, ainda que variem conforme o dispositivo e o padrão de uso. Do ponto de vista esportivo, o prejuízo ao desempenho e à recuperação física foi confirmado por literatura científica revisada por pares. Do ponto de vista social, a glamourização nas redes amplia a percepção de normalidade e reduz a percepção de risco.</p>
+    <p>O combate a essa epidemia invisível exige desmontar a imagem idealizada que se construiu em torno desses produtos. Escola, família e sistema de saúde não deveriam concentrar esforços em punição ou julgamento moral. O foco mais produtivo está no letramento científico, no acolhimento psicológico, na circulação de informações baseadas em evidências e no fortalecimento de vínculos. Talvez o caminho mais consistente seja esse: dar ao adolescente ferramentas para pensar por conta própria, em vez de apenas proibir.</p>
+</div>
+
+<!-- ============ 7 REFERÊNCIAS (p. 16) ============ -->
+<div class="pagina conteudo referencias" id="referencias">
+    <span class="page-number">16</span>
+    <h2>7 Referências</h2>
+    <p>AMERICAN HEART ASSOCIATION. Cardiopulmonary consequences of vaping in adolescents: a scientific statement from the American Heart Association. <em>Circulation Research</em>, [S.l.], 2022. DOI: 10.1161/RES.0000000000000544. Disponível em: https://www.ahajournals.org/doi/10.1161/RES.0000000000000544. Acesso em: 6 nov. 2026.</p>
+    <p>AMERICAN LUNG ASSOCIATION. <strong>Popcorn lung risk and e-cigarettes</strong>. [S.l.], 2023. Disponível em: https://www.lung.org/blog/popcorn-lung-risk-ecigs. Acesso em: 6 nov. 2026.</p>
+    <p>CENTERS FOR DISEASE CONTROL AND PREVENTION. <strong>E-cigarette or vaping product use-associated lung injury (EVALI)</strong>. Atlanta: CDC, 2020. Disponível em: https://stacks.cdc.gov/view/cdc/230908. Acesso em: 6 nov. 2026.</p>
+    <p>CENTRO DE VALORIZAÇÃO DA VIDA. <strong>Mapa genérico 188</strong>. [S.l.], 2023. Disponível em: https://cvv.org.br. Acesso em: 6 nov. 2026.</p>
+    <p>INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. <strong>Pesquisa Nacional de Saúde do Escolar 2024 (PeNSE)</strong>. Rio de Janeiro: IBGE, 2024. 171 p. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv102266.pdf. Acesso em: 6 nov. 2026.</p>
+    <p>INSTITUTO NACIONAL DE CÂNCER JOSÉ ALENCAR GOMES DA SILVA. <strong>Cigarros eletrônicos: o que sabemos? Estudo sobre a composição do vapor e danos à saúde, o papel na redução de danos e no tratamento da dependência de nicotina</strong>. Rio de Janeiro: INCA, 2016. 120 p. Disponível em: https://www.gov.br/inca. Acesso em: 6 nov. 2026.</p>
+    <p>INSTITUTO NACIONAL DE CÂNCER JOSÉ ALENCAR GOMES DA SILVA. <strong>Narguilé: informe técnico</strong>. Rio de Janeiro: INCA, 2015. Disponível em: https://ninho.inca.gov.br. Acesso em: 6 nov. 2026.</p>
+    <p>LAKICEVIC, N. <em>et al.</em> Effects of alcohol consumption on recovery from resistance exercise: a systematic review. <em>Journal of Functional Morphology and Kinesiology</em>, [S.l.], 2019. Disponível em: https://pmc.ncbi.nlm.nih.gov/articles/PMC7739274. Acesso em: 6 nov. 2026.</p>
+    <p>ORGANIZAÇÃO MUNDIAL DA SAÚDE. <strong>WHO report on the global tobacco epidemic, 2023: protect people from tobacco smoke</strong>. Genebra: WHO, 2023. 216 p. ISBN 978-92-4-007716-4. Disponível em: https://www.who.int/publications/i/item/9789240077164. Acesso em: 6 nov. 2026.</p>
+    <p>SILVA, A. L. O. da; MOREIRA, J. C. Sais de nicotina e nicotina sintética: novos desafios para um velho problema. <em>Revista Brasileira de Cancerologia</em>, Rio de Janeiro, v. 68, n. 4, p. e-202846, 2022. DOI: 10.32635/2176-9745.RBC.2022v68n4.2846. Disponível em: https://rbc.inca.gov.br/index.php/revista/article/view/2846. Acesso em: 6 nov. 2026.</p>
+    <p>SOCIEDADE BRASILEIRA DE PEDIATRIA. <strong>Uso de cigarros eletrônicos e vaporizadores entre crianças e adolescentes: riscos à saúde e dependência</strong>. Rio de Janeiro: SBP, [s.d.]. Guia Prático de Atualização. <em>Apud</em> ACT PROMOÇÃO DA SAÚDE. <strong>Nicotina: o que sabemos? Nota Técnica</strong>. São Paulo: ACT, 2024. Disponível em: https://actbr.org.br. Acesso em: 6 nov. 2026.</p>
+</div>
 
 </body>
 </html>
