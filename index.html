@@ -104,11 +104,9 @@
         }
         .sumario ul { list-style: none; padding-left: 0; }
         .sumario li {
-            font-size: 12pt; margin-bottom: 0.25em;
+            font-size: 12pt; margin-bottom: 0.35em;
             text-indent: 0; text-align: left;
         }
-        .sumario li.primaria { font-weight: bold; text-transform: uppercase; }
-        .sumario li.secundaria { font-weight: normal; text-transform: none; padding-left: 0.75cm; }
         .sumario .item { display: flex; align-items: baseline; }
         .sumario .item .titulo { flex: 0 0 auto; }
         .sumario .item .dots {
@@ -132,6 +130,11 @@
             margin-bottom: 1em; text-align: left;
             font-weight: bold; text-transform: none;
         }
+        /* Evita "buraco" no topo quando h2/h3 abre a página */
+        .conteudo > h2:first-of-type,
+        .conteudo > h3:first-of-type {
+            margin-top: 0;
+        }
         .conteudo p {
             text-indent: 1.25cm; text-align: justify;
             margin-bottom: 0.75em;
@@ -140,12 +143,13 @@
         /* ===== FIGURAS ===== */
         .figura {
             text-align: center;
-            margin: 1.2em 0 1.5em 0;
+            margin: 0.9em 0 1em 0;
             page-break-inside: avoid;
         }
         .figura img {
             max-width: 100%;
-            max-height: 9cm;
+            max-height: 5.5cm;
+            width: auto;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -153,7 +157,7 @@
         .figura figcaption {
             font-size: 10pt;
             line-height: 1.2;
-            margin-top: 0.4em;
+            margin-top: 0.35em;
             text-align: center;
             text-indent: 0;
             color: #000;
@@ -165,12 +169,19 @@
         }
 
         /* ===== REFERÊNCIAS ===== */
-        .conteudo .referencias h2 { margin-bottom: 1em; }
-        .conteudo .referencias p {
-            text-indent: 0; margin-left: 0;
-            text-align: left; line-height: 1.0;
+        .conteudo .referencias h2 {
+            text-align: center;
             margin-bottom: 1em;
+        }
+        .conteudo .referencias p {
             font-size: 12pt;
+            line-height: 1.0;
+            margin-bottom: 0.4em;
+            text-indent: 0;
+            margin-left: 0;
+            text-align: left;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
         }
         .conteudo .referencias strong { font-weight: bold; }
         .conteudo .referencias em { font-style: italic; }
@@ -226,19 +237,18 @@
 <div class="pagina sumario">
     <h1>Sumário</h1>
     <ul>
-        <li class="item primaria"><span class="titulo">1 Introdução</span><span class="dots"></span><span class="numero">4</span></li>
-        <li class="item primaria"><span class="titulo">2 Desenvolvimento</span><span class="dots"></span><span class="numero">5</span></li>
-        <li class="item secundaria"><span class="titulo">2.1 Definições e conceitos</span><span class="dots"></span><span class="numero">5</span></li>
-        <li class="item secundaria"><span class="titulo">2.2 Química das substâncias e mecanismo de dependência</span><span class="dots"></span><span class="numero">6</span></li>
-        <li class="item secundaria"><span class="titulo">2.3 Impactos fisiológicos nos sistemas respiratório e cardiovascular</span><span class="dots"></span><span class="numero">7</span></li>
-        <li class="item secundaria"><span class="titulo">2.4 Relação com a atividade física e o desempenho esportivo</span><span class="dots"></span><span class="numero">8</span></li>
-        <li class="item secundaria"><span class="titulo">2.5 Contexto sociocultural: glamourização e pressão de grupo</span><span class="dots"></span><span class="numero">9</span></li>
-        <li class="item secundaria"><span class="titulo">2.6 Prevenção e formas de buscar ajuda</span><span class="dots"></span><span class="numero">10</span></li>
-        <li class="item primaria"><span class="titulo">3 Investigação: Mitos x Realidade</span><span class="dots"></span><span class="numero">11</span></li>
-        <li class="item primaria"><span class="titulo">4 Dados, Gráficos e Imagens</span><span class="dots"></span><span class="numero">12</span></li>
-        <li class="item primaria"><span class="titulo">5 Reflexão sobre o Tema</span><span class="dots"></span><span class="numero">14</span></li>
-        <li class="item primaria"><span class="titulo">6 Conclusão</span><span class="dots"></span><span class="numero">15</span></li>
-        <li class="item primaria"><span class="titulo">7 Referências</span><span class="dots"></span><span class="numero">16</span></li>
+        <li class="item"><span class="titulo">1 Introdução</span><span class="dots"></span><span class="numero">4</span></li>
+        <li class="item"><span class="titulo">2 Definições e Conceitos</span><span class="dots"></span><span class="numero">5</span></li>
+        <li class="item"><span class="titulo">3 Química das Substâncias e Mecanismo de Dependência</span><span class="dots"></span><span class="numero">6</span></li>
+        <li class="item"><span class="titulo">4 Impactos Fisiológicos nos Sistemas Respiratório e Cardiovascular</span><span class="dots"></span><span class="numero">7</span></li>
+        <li class="item"><span class="titulo">5 Relação com a Atividade Física e o Desempenho Esportivo</span><span class="dots"></span><span class="numero">8</span></li>
+        <li class="item"><span class="titulo">6 Contexto Sociocultural: Glamourização e Pressão de Grupo</span><span class="dots"></span><span class="numero">9</span></li>
+        <li class="item"><span class="titulo">7 Prevenção e Formas de Buscar Ajuda</span><span class="dots"></span><span class="numero">10</span></li>
+        <li class="item"><span class="titulo">8 Investigação: Mitos x Realidade</span><span class="dots"></span><span class="numero">11</span></li>
+        <li class="item"><span class="titulo">9 Dados, Gráficos e Imagens</span><span class="dots"></span><span class="numero">12</span></li>
+        <li class="item"><span class="titulo">10 Reflexão sobre o Tema</span><span class="dots"></span><span class="numero">13</span></li>
+        <li class="item"><span class="titulo">11 Conclusão</span><span class="dots"></span><span class="numero">14</span></li>
+        <li class="item"><span class="titulo">Referências</span><span class="dots"></span><span class="numero">15</span></li>
     </ul>
 </div>
 
@@ -250,12 +260,10 @@
     <p>A experimentação costuma ser facilitada por estratégias de marketing agressivas. Designs modernos, sabores adocicados e a presença de influenciadores digitais reduzem a percepção de perigo — fenômeno já documentado em relatórios da OMS (2023) sobre a indústria do tabaco. Este trabalho procura analisar o que são esses dispositivos, como a dependência química se instala no cérebro em desenvolvimento e quais reflexos negativos aparecem, de imediato ou mais tarde, na saúde e no desempenho físico dos jovens. Também são discutidos caminhos possíveis de prevenção e conscientização.</p>
 </div>
 
-<!-- ============ 2 DESENVOLVIMENTO + 2.1 (p. 5) ============ -->
-<div class="pagina conteudo" id="desenvolvimento1">
+<!-- ============ 2 DEFINIÇÕES (p. 5) ============ -->
+<div class="pagina conteudo" id="definicoes">
     <span class="page-number">5</span>
-    <h2>2 Desenvolvimento</h2>
-
-    <h3>2.1 Definições e conceitos</h3>
+    <h2>2 Definições e Conceitos</h2>
     <p>Os cigarros eletrônicos — os vapes, como todo mundo chama — funcionam com uma bateria pequena que alimenta um atomizador. Esse atomizador esquenta um líquido de composição variável: solventes, aromatizantes e, quase sempre, nicotina. O que sai do dispositivo é um aerossol fino, inalado pelo usuário. Muita gente chama de vapor, mas a palavra é imprecisa: não é água evaporada, é uma mistura de partículas que carrega o que estava no líquido. Os pods são modelos compactos, com sistemas fechados ou cartuchos recarregáveis. A diferença central está no uso de sais de nicotina, os chamados <em>nic salts</em>, que permitem absorção pulmonar mais rápida e concentrações elevadas da droga sem provocar a irritação imediata na garganta típica do cigarro convencional (SILVA; MOREIRA, 2022). O ácido benzoico, presente nessa formulação, protona a nicotina e favorece esse efeito.</p>
     <p>O narguilé, por sua vez, é um cachimbo de água de origem oriental. Nele, o tabaco aromatizado é aquecido por carvão, e a fumaça passa por um filtro de água antes de ser aspirada pela mangueira. Já o consumo de álcool na adolescência refere-se à ingestão de bebidas antes da maioridade civil e da maturação completa do sistema nervoso central. Com frequência, aparece associado ao consumo episódico excessivo, o <em>binge drinking</em>.</p>
 
@@ -268,10 +276,10 @@
     </figure>
 </div>
 
-<!-- ============ 2.2 (p. 6) ============ -->
-<div class="pagina conteudo" id="desenvolvimento2">
+<!-- ============ 3 QUÍMICA (p. 6) ============ -->
+<div class="pagina conteudo" id="quimica">
     <span class="page-number">6</span>
-    <h3>2.2 Química das substâncias e mecanismo de dependência</h3>
+    <h2>3 Química das Substâncias e Mecanismo de Dependência</h2>
     <p>O aerossol dos dispositivos eletrônicos e a fumaça do narguilé contêm substâncias bastante nocivas. Entre elas estão propilenoglicol, glicerina vegetal, metais pesados como níquel, chumbo e cádmio — que podem vir da quebra da resistência —, compostos orgânicos voláteis e substâncias cancerígenas geradas pelo superaquecimento dos aromatizantes artificiais (INCA, 2016; SILVA; MOREIRA, 2022).</p>
     <p>A nicotina age nos receptores nicotínicos de acetilcolina no cérebro e estimula a liberação de dopamina nas vias de recompensa. No adolescente, o cérebro ainda passa por poda sináptica e formação do córtex pré-frontal, responsável pelo controle de impulsos e pelo julgamento. Essa plasticidade neural acelerada faz com que os circuitos de dependência se estabeleçam com velocidade e intensidade maiores do que em adultos (SBP, 2022 <em>apud</em> ACT, 2024). Quando a substância falta, aparecem crises de abstinência importantes, com ansiedade, irritabilidade e déficit de atenção.</p>
 
@@ -284,10 +292,10 @@
     </figure>
 </div>
 
-<!-- ============ 2.3 (p. 7) ============ -->
-<div class="pagina conteudo" id="desenvolvimento3">
+<!-- ============ 4 IMPACTOS FISIOLÓGICOS (p. 7) ============ -->
+<div class="pagina conteudo" id="impactos">
     <span class="page-number">7</span>
-    <h3>2.3 Impactos fisiológicos nos sistemas respiratório e cardiovascular</h3>
+    <h2>4 Impactos Fisiológicos nos Sistemas Respiratório e Cardiovascular</h2>
     <p>O uso crônico ou agudo desses produtos compromete órgãos vitais. No sistema respiratório, a inalação de partículas finas causa inflamação nos bronquíolos e alvéolos. O uso de vapes e pods está associado à EVALI — <em>E-cigarette or Vaping Product Use-Associated Lung Injury</em> —, lesão pulmonar aguda potencialmente fatal, definida pelo CDC (2020) como categoria guarda-chuva para todas as lesões pulmonares relacionadas a cigarros eletrônicos. Nos surtos investigados, houve forte associação com acetato de vitamina E em cartuchos de THC, o que não elimina o risco de outras formulações.</p>
     <p>Sobre a bronquiolite obliterante, conhecida como "pulmão de pipoca", é preciso cautela. A associação documentada refere-se à inalação de diacetil, flavorizante usado em alguns líquidos, e não a todos os vaporizadores do mercado (AMERICAN LUNG ASSOCIATION, 2023). Trata-se de risco relevante, mas não de consequência universal e automática de qualquer vape — generalização que a literatura não sustenta.</p>
     <p>No sistema cardiovascular, a nicotina provoca vasoconstrição imediata, eleva a frequência cardíaca e aumenta a pressão arterial. O coração passa a trabalhar sob sobrecarga, e o enrijecimento arterial tende a ser antecipado (AHA, 2022). O consumo agudo de álcool, por sua vez, pode provocar disritmias e miocardiopatias.</p>
@@ -301,18 +309,18 @@
     </figure>
 </div>
 
-<!-- ============ 2.4 (p. 8) ============ -->
-<div class="pagina conteudo" id="desenvolvimento4">
+<!-- ============ 5 ATIVIDADE FÍSICA (p. 8) ============ -->
+<div class="pagina conteudo" id="atividade">
     <span class="page-number">8</span>
-    <h3>2.4 Relação com a atividade física e o desempenho esportivo</h3>
+    <h2>5 Relação com a Atividade Física e o Desempenho Esportivo</h2>
     <p>A prática esportiva exige transporte eficiente de oxigênio e boa regeneração celular. Álcool e nicotina atrapalham justamente esses processos, por mecanismos distintos. No narguilé, a combustão do tabaco e do carvão gera monóxido de carbono, que se liga à hemoglobina com mais força que o oxigênio e forma carboxihemoglobina. O resultado imediato é perda de fôlego, fadiga precoce e redução do VO₂ máximo. Nos vapes, não há combustão no mesmo sentido; o prejuízo ao desempenho tende a vir de outros caminhos — inflamação das vias aéreas, vasoconstrição induzida pela nicotina e irritação epitelial —, e não da formação de carboxihemoglobina. Essa distinção importa para não atribuir ao vape um mecanismo que é próprio da queima.</p>
     <p>Uma revisão sistemática sobre recuperação após exercícios resistidos aponta que o consumo de álcool pode aumentar o cortisol e, ao mesmo tempo, reduzir a disponibilidade de aminoácidos no plasma e a taxa de síntese proteica muscular — efeito que os autores associam à supressão da via mTORC1 (LAKICEVIC et al., 2019). Há outros agravantes. O álcool tem efeito diurético e, por isso, desidrata. A desidratação, por sua vez, aumenta a chance de cãibras, reduz a contratilidade muscular e mexe com tempo de reação, coordenação e equilíbrio — e esses prejuízos podem durar até 24 horas depois da ingestão.</p>
 </div>
 
-<!-- ============ 2.5 (p. 9) ============ -->
-<div class="pagina conteudo" id="desenvolvimento5">
+<!-- ============ 6 CONTEXTO SOCIOCULTURAL (p. 9) ============ -->
+<div class="pagina conteudo" id="contexto">
     <span class="page-number">9</span>
-    <h3>2.5 Contexto sociocultural: glamourização e pressão de grupo</h3>
+    <h2>6 Contexto Sociocultural: Glamourização e Pressão de Grupo</h2>
     <p>O início do consumo raramente é uma decisão puramente individual. Na maioria das vezes, insere-se em uma rede de pressões sociais. Os adolescentes buscam nesses dispositivos e nas bebidas ferramentas de mediação social para demonstrar maturidade, status, rebeldia estética ou popularidade.</p>
     <p>As plataformas digitais, como Instagram e TikTok, funcionam como amplificadores desse comportamento. Elas exibem recortes idealizados de festas e estilos de vida em que vape e álcool aparecem como sinônimos de sucesso e diversão. Essa banalização esconde as consequências biológicas e cria a falsa impressão de que tais hábitos seriam inofensivos e próprios da juventude moderna (OMS, 2023).</p>
 
@@ -325,10 +333,10 @@
     </figure>
 </div>
 
-<!-- ============ 2.6 PREVENÇÃO (p. 10) ============ -->
-<div class="pagina conteudo" id="desenvolvimento6">
+<!-- ============ 7 PREVENÇÃO (p. 10) ============ -->
+<div class="pagina conteudo" id="prevencao">
     <span class="page-number">10</span>
-    <h3>2.6 Prevenção e formas de buscar ajuda</h3>
+    <h2>7 Prevenção e Formas de Buscar Ajuda</h2>
     <p>A prevenção mais eficaz não passa pelo julgamento moral, mas pela informação qualificada e pelo acolhimento. A escola tem papel central ao promover o letramento científico: explicar o que são essas substâncias, como agem no corpo e quais são os riscos reais, sem alarmismo e sem romantização. Programas como o Saúde na Escola (PSE) aproximam a rede de saúde da comunidade escolar, oferecendo palestras, rodas de conversa e encaminhamento clínico.</p>
     <p>Quando o adolescente já faz uso dessas substâncias e deseja ajuda, existem canais gratuitos e sigilosos. O Centro de Valorização da Vida (CVV), pelo telefone <strong>188</strong>, oferece apoio emocional 24 horas por dia. Os Centros de Atenção Psicossocial (CAPS) e as Unidades Básicas de Saúde (UBS) atendem casos de dependência química pelo Sistema Único de Saúde (SUS). Em situações de risco à vida, o Disque 100 (Direitos Humanos) e o SAMU 192 também podem ser acionados.</p>
     <p>Para a família, o caminho mais produtivo é o diálogo sem punição prévia. Repreensões imediatas tendem a gerar isolamento e a reforçar o comportamento de risco, enquanto o acolhimento abre espaço para o jovem reconhecer o problema e buscar tratamento. O foco deve estar nos vínculos, na circulação de informação confiável e na construção conjunta de alternativas de lazer e pertencimento que não dependam da substância.</p>
@@ -342,10 +350,10 @@
     </figure>
 </div>
 
-<!-- ============ 3 INVESTIGAÇÃO: MITOS X REALIDADE (p. 11) ============ -->
+<!-- ============ 8 MITOS X REALIDADE (p. 11) ============ -->
 <div class="pagina conteudo" id="mitos">
     <span class="page-number">11</span>
-    <h2>3 Investigação: Mitos x Realidade</h2>
+    <h2>8 Investigação: Mitos x Realidade</h2>
     <p>Esta seção apresenta cinco afirmações comuns entre adolescentes sobre álcool, vape, pod e narguilé, confrontadas com a literatura científica disponível. A intenção é desmontar informações incorretas que circulam livremente em conversas e redes sociais.</p>
 
     <p><strong>Mito 1 — “O pod é menos prejudicial porque não é cigarro convencional.”</strong> Falso. Os pods usam sais de nicotina altamente concentrados. Segundo Silva e Moreira (2022), um único cartucho pode conter quantidade de nicotina equivalente à de um maço inteiro de cigarros comuns — cerca de 20 cigarros. Volumes maiores frequentemente citados em redes sociais referem-se a tanques abertos e dispositivos de alta capacidade, mas, ainda assim, o potencial de dependência é alto.</p>
@@ -367,10 +375,10 @@
     </figure>
 </div>
 
-<!-- ============ 4 DADOS, GRÁFICOS E IMAGENS (p. 12) ============ -->
-<div class="pagina conteudo" id="dados1">
+<!-- ============ 9 DADOS (p. 12) ============ -->
+<div class="pagina conteudo" id="dados">
     <span class="page-number">12</span>
-    <h2>4 Dados, Gráficos e Imagens</h2>
+    <h2>9 Dados, Gráficos e Imagens</h2>
     <p>Os dados a seguir foram extraídos de fontes oficiais e permitem dimensionar a prevalência e a intensidade do consumo dessas substâncias entre adolescentes e jovens brasileiros. O primeiro gráfico apresenta dados da Pesquisa Nacional de Saúde do Escolar (PeNSE), conduzida pelo IBGE, que entrevistou estudantes do 9º ano do Ensino Fundamental em todo o país.</p>
 
     <figure class="figura">
@@ -381,13 +389,7 @@
         </figcaption>
     </figure>
 
-    <p>Os números reforçam uma tendência preocupante: o cigarro eletrônico deixou de ser uma curiosidade restrita a nichos e passou a circular com naturalidade entre adolescentes, inclusive dentro do ambiente escolar. Esse cenário dialoga diretamente com o que foi discutido na seção 2.5: quando o produto se torna visualmente comum, sua percepção de risco diminui.</p>
-</div>
-
-<!-- ============ 4 DADOS (cont. - p. 13) ============ -->
-<div class="pagina conteudo" id="dados2">
-    <span class="page-number">13</span>
-    <p>Além da prevalência, é importante comparar a concentração de nicotina entre os dispositivos disponíveis no mercado. O gráfico a seguir sintetiza essa comparação a partir de dados do INCA e de artigos científicos revisados por pares.</p>
+    <p>Os números reforçam uma tendência preocupante: o cigarro eletrônico deixou de ser uma curiosidade restrita a nichos e passou a circular com naturalidade entre adolescentes, inclusive dentro do ambiente escolar. Esse cenário dialoga diretamente com o discutido na seção 6: quando o produto se torna visualmente comum, sua percepção de risco diminui.</p>
 
     <figure class="figura">
         <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_135839112_agjcbd.png" alt="Gráfico comparativo da concentração de nicotina entre cigarro, pod e narguilé">
@@ -397,31 +399,31 @@
         </figcaption>
     </figure>
 
-    <p>A comparação evidencia que o argumento do “menos prejudicial” não se sustenta do ponto de vista da nicotina. Um único pod pode entregar ao organismo quantidade de nicotina equivalente à de um maço inteiro de cigarros, e uma sessão de narguilé pode superar esse valor várias vezes. Para o adolescente, cujo cérebro ainda está em formação, essa exposição precoce acelera a instalação da dependência.</p>
+    <p>A comparação evidencia que o argumento do “menos prejudicial” não se sustenta do ponto de vista da nicotina. Um único pod pode entregar ao organismo quantidade de nicotina equivalente à de um maço inteiro de cigarros, e uma sessão de narguilé pode superar esse valor várias vezes.</p>
 </div>
 
-<!-- ============ 5 REFLEXÃO SOBRE O TEMA (p. 14) ============ -->
+<!-- ============ 10 REFLEXÃO (p. 13) ============ -->
 <div class="pagina conteudo" id="reflexao">
-    <span class="page-number">14</span>
-    <h2>5 Reflexão sobre o Tema</h2>
+    <span class="page-number">13</span>
+    <h2>10 Reflexão sobre o Tema</h2>
     <p>Por que algo que pode prejudicar a saúde é tantas vezes apresentado como diversão? A resposta passa pela construção mercadológica. A indústria do tabaco e do álcool percebeu, há algum tempo, que precisava mudar a embalagem. A fumaça densa e o cheiro de alcatrão, que afastavam parte do público, deram lugar a dispositivos pequenos, coloridos, com sabores frutados e aparência tecnológica. É um produto pensado para circular bem em foto e vídeo. E quando o risco aparece embrulhado em diversão, liberdade ou status, o instinto de autopreservação do adolescente perde força. O que era nocivo e viciante passa a parecer desejável, socialmente aceito, quase inofensivo (OMS, 2023).</p>
     <p>Essa reflexão se conecta diretamente com a adolescência como fase de construção de identidade. O jovem não escolhe o vape apenas pelo sabor ou pela nicotina: escolhe o que ele representa — pertencimento, maturidade, estética. Enquanto a sociedade continuar associando esses produtos a esses valores, o simples ato de proibir tende a ser insuficiente. A prevenção real exige oferecer ao adolescente outras formas de pertencimento e de expressão que não dependam da substância.</p>
     <p>Por fim, o trabalho reforça que a informação correta é uma ferramenta de liberdade. Quando o jovem entende o que está em jogo — o que o produto faz com o corpo, com o cérebro, com o próprio desempenho —, a decisão de recusar deixa de ser obediência e passa a ser escolha. E escolha consciente é o que mais se aproxima de liberdade de verdade.</p>
 </div>
 
-<!-- ============ 6 CONCLUSÃO (p. 15) ============ -->
+<!-- ============ 11 CONCLUSÃO (p. 14) ============ -->
 <div class="pagina conteudo" id="conclusao">
-    <span class="page-number">15</span>
-    <h2>6 Conclusão</h2>
+    <span class="page-number">14</span>
+    <h2>11 Conclusão</h2>
     <p>Este trabalho permitiu compreender que o consumo precoce de álcool, vapes, pods e narguilé entre adolescentes não é apenas uma escolha individual: é um fenômeno social atravessado por marketing, pressão de grupo, redes sociais e pela construção cultural do risco como diversão. Cada uma das substâncias analisadas — com mecanismos e formas de uso distintos — compartilha um mesmo núcleo problemático: a exposição precoce do sistema nervoso em formação a substâncias com alto potencial de dependência.</p>
     <p>Do ponto de vista fisiológico, os efeitos sobre os sistemas respiratório e cardiovascular são reais e documentados, ainda que variem conforme o dispositivo e o padrão de uso. Do ponto de vista esportivo, o prejuízo ao desempenho e à recuperação física foi confirmado por literatura científica revisada por pares. Do ponto de vista social, a glamourização nas redes amplia a percepção de normalidade e reduz a percepção de risco.</p>
     <p>O combate a essa epidemia invisível exige desmontar a imagem idealizada que se construiu em torno desses produtos. Escola, família e sistema de saúde não deveriam concentrar esforços em punição ou julgamento moral. O foco mais produtivo está no letramento científico, no acolhimento psicológico, na circulação de informações baseadas em evidências e no fortalecimento de vínculos. Talvez o caminho mais consistente seja esse: dar ao adolescente ferramentas para pensar por conta própria, em vez de apenas proibir.</p>
 </div>
 
-<!-- ============ 7 REFERÊNCIAS (p. 16) ============ -->
+<!-- ============ REFERÊNCIAS (p. 15) ============ -->
 <div class="pagina conteudo referencias" id="referencias">
-    <span class="page-number">16</span>
-    <h2>7 Referências</h2>
+    <span class="page-number">15</span>
+    <h2>Referências</h2>
     <p>AMERICAN HEART ASSOCIATION. Cardiopulmonary consequences of vaping in adolescents: a scientific statement from the American Heart Association. <em>Circulation Research</em>, [S.l.], 2022. DOI: 10.1161/RES.0000000000000544. Disponível em: https://www.ahajournals.org/doi/10.1161/RES.0000000000000544. Acesso em: 6 nov. 2026.</p>
     <p>AMERICAN LUNG ASSOCIATION. <strong>Popcorn lung risk and e-cigarettes</strong>. [S.l.], 2023. Disponível em: https://www.lung.org/blog/popcorn-lung-risk-ecigs. Acesso em: 6 nov. 2026.</p>
     <p>CENTERS FOR DISEASE CONTROL AND PREVENTION. <strong>E-cigarette or vaping product use-associated lung injury (EVALI)</strong>. Atlanta: CDC, 2020. Disponível em: https://stacks.cdc.gov/view/cdc/230908. Acesso em: 6 nov. 2026.</p>
