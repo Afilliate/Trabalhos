@@ -117,7 +117,7 @@
             orphans: 3; widows: 3;
         }
 
-        /* ===== FIGURAS (compactas) ===== */
+        /* ===== FIGURAS ===== */
         .figura {
             text-align: center;
             margin: 0.4em 0 0.6em 0;
@@ -138,16 +138,17 @@
             display: block; font-size: 10pt; margin-top: 0.1em;
         }
 
-        /* ===== REFERÊNCIAS (compactas) ===== */
+        /* ===== REFERÊNCIAS (padrão ABNT NBR 6023) ===== */
         .conteudo .referencias h2 {
-            text-align: center; margin-bottom: 1em;
+            text-align: center;
+            margin-bottom: 1.5em;
         }
         .conteudo .referencias p {
-            font-size: 11pt;
-            line-height: 0.95;
-            margin-bottom: 0.22em;
-            text-indent: 0; text-align: justify;
-            hyphens: auto;
+            font-size: 12pt;
+            line-height: 1.0;
+            text-align: left;
+            text-indent: 0;
+            margin-bottom: 1em;
             overflow-wrap: anywhere;
             word-wrap: break-word;
         }
@@ -163,7 +164,7 @@
 </head>
 <body>
 
-<!-- CAPA -->
+<!-- ============ CAPA ============ -->
 <div class="pagina capa">
     <p class="instituicao">COLÉGIO UNICULTURA</p>
     <p class="autor">
@@ -178,7 +179,7 @@
     <p class="cidade">Guarulhos<br>2026</p>
 </div>
 
-<!-- FOLHA DE ROSTO (p. 1) -->
+<!-- ============ FOLHA DE ROSTO (p. 1) ============ -->
 <div class="pagina folharosto">
     <p class="autor">
         Daniel Augustus Gomes Barbosa<br>
@@ -194,14 +195,14 @@
     <p class="cidade">Guarulhos<br>2026</p>
 </div>
 
-<!-- RESUMO (p. 2) -->
+<!-- ============ RESUMO (p. 2) ============ -->
 <div class="pagina resumo">
     <h1>Resumo</h1>
     <p class="texto-resumo">Este documento aborda o consumo de álcool, cigarros eletrônicos, pods e narguilé entre adolescentes. Parte-se de uma indagação recorrente: por que práticas tão nocivas circulam com tanta naturalidade entre jovens? A partir dela, examinam-se fatores psicossociais que favorecem a experimentação precoce, o peso das redes sociais na banalização desses usos e os efeitos fisiológicos dessas substâncias sobre os sistemas cardiovascular e respiratório. Discute-se, ainda, o impacto no rendimento esportivo e na recuperação física. A argumentação se apoia em literatura de saúde coletiva (INCA, 2016; SILVA; MOREIRA, 2022; OMS, 2023; CDC, 2020), confronta mitos frequentes no imaginário juvenil e sugere caminhos de prevenção e acolhimento clínico. Ao final, sustenta-se que a transformação desses produtos em mercadoria e a glamourização cultural do risco tendem a encobrir uma dependência química e biológica que começa cedo.</p>
     <p class="palavras-chave"><strong>Palavras-chave:</strong> Adolescência. Vape. Dependência nicotínica. Consumo de álcool. Desempenho esportivo.</p>
 </div>
 
-<!-- SUMÁRIO (p. 3) -->
+<!-- ============ SUMÁRIO (p. 3) ============ -->
 <div class="pagina sumario">
     <h1>Sumário</h1>
     <ul>
@@ -220,7 +221,7 @@
     </ul>
 </div>
 
-<!-- 1 INTRODUÇÃO (p. 4) -->
+<!-- ============ 1 INTRODUÇÃO (p. 4) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">4</span>
     <h2>1 Introdução</h2>
@@ -228,7 +229,7 @@
     <p>A experimentação costuma ser facilitada por estratégias de marketing agressivas. Designs modernos, sabores adocicados e a presença de influenciadores digitais reduzem a percepção de perigo — fenômeno já documentado em relatórios da OMS (2023) sobre a indústria do tabaco. Este trabalho procura analisar o que são esses dispositivos, como a dependência química se instala no cérebro em desenvolvimento e quais reflexos negativos aparecem, de imediato ou mais tarde, na saúde e no desempenho físico dos jovens. Também são discutidos caminhos possíveis de prevenção e conscientização.</p>
 </div>
 
-<!-- 2 DEFINIÇÕES (p. 5) -->
+<!-- ============ 2 DEFINIÇÕES (p. 5) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">5</span>
     <h2>2 Definições e Conceitos</h2>
@@ -241,7 +242,7 @@
     </figure>
 </div>
 
-<!-- 3 QUÍMICA (p. 6) -->
+<!-- ============ 3 QUÍMICA (p. 6) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">6</span>
     <h2>3 Química das Substâncias e Mecanismo de Dependência</h2>
@@ -254,7 +255,7 @@
     </figure>
 </div>
 
-<!-- 4 IMPACTOS (p. 7) -->
+<!-- ============ 4 IMPACTOS (p. 7) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">7</span>
     <h2>4 Impactos Fisiológicos nos Sistemas Respiratório e Cardiovascular</h2>
@@ -268,7 +269,7 @@
     </figure>
 </div>
 
-<!-- 5 ATIVIDADE FÍSICA (p. 8) -->
+<!-- ============ 5 ATIVIDADE FÍSICA (p. 8) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">8</span>
     <h2>5 Relação com a Atividade Física e o Desempenho Esportivo</h2>
@@ -276,7 +277,7 @@
     <p>Uma revisão sistemática sobre recuperação após exercícios resistidos aponta que o consumo de álcool pode aumentar o cortisol e, ao mesmo tempo, reduzir a disponibilidade de aminoácidos no plasma e a taxa de síntese proteica muscular — efeito que os autores associam à supressão da via mTORC1 (LAKICEVIC et al., 2019). Há outros agravantes. O álcool tem efeito diurético e, por isso, desidrata. A desidratação, por sua vez, aumenta a chance de cãibras, reduz a contratilidade muscular e mexe com tempo de reação, coordenação e equilíbrio — e esses prejuízos podem durar até 24 horas depois da ingestão.</p>
 </div>
 
-<!-- 6 CONTEXTO (p. 9) -->
+<!-- ============ 6 CONTEXTO (p. 9) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">9</span>
     <h2>6 Contexto Sociocultural: Glamourização e Pressão de Grupo</h2>
@@ -289,7 +290,7 @@
     </figure>
 </div>
 
-<!-- 7 PREVENÇÃO (p. 10) -->
+<!-- ============ 7 PREVENÇÃO (p. 10) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">10</span>
     <h2>7 Prevenção e Formas de Buscar Ajuda</h2>
@@ -303,7 +304,7 @@
     </figure>
 </div>
 
-<!-- 8 MITOS X REALIDADE (p. 11) -->
+<!-- ============ 8 MITOS X REALIDADE (p. 11) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">11</span>
     <h2>8 Investigação: Mitos x Realidade</h2>
@@ -325,7 +326,7 @@
     </figure>
 </div>
 
-<!-- 9 DADOS (p. 12) -->
+<!-- ============ 9 DADOS (p. 12) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">12</span>
     <h2>9 Dados, Gráficos e Imagens</h2>
@@ -346,7 +347,7 @@
     <p>Um único pod pode entregar nicotina equivalente a um maço inteiro de cigarros, e uma sessão de narguilé pode superar esse valor várias vezes. O argumento do “menos prejudicial” não se sustenta.</p>
 </div>
 
-<!-- 10 REFLEXÃO (p. 13) -->
+<!-- ============ 10 REFLEXÃO (p. 13) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">13</span>
     <h2>10 Reflexão sobre o Tema</h2>
@@ -355,7 +356,7 @@
     <p>Por fim, o trabalho reforça que a informação correta é uma ferramenta de liberdade. Quando o jovem entende o que está em jogo — o que o produto faz com o corpo, com o cérebro, com o próprio desempenho —, a decisão de recusar deixa de ser obediência e passa a ser escolha. E escolha consciente é o que mais se aproxima de liberdade de verdade.</p>
 </div>
 
-<!-- 11 CONCLUSÃO (p. 14) -->
+<!-- ============ 11 CONCLUSÃO (p. 14) ============ -->
 <div class="pagina conteudo">
     <span class="page-number">14</span>
     <h2>11 Conclusão</h2>
@@ -364,20 +365,34 @@
     <p>O combate a essa epidemia invisível exige desmontar a imagem idealizada que se construiu em torno desses produtos. Escola, família e sistema de saúde não deveriam concentrar esforços em punição ou julgamento moral. O foco mais produtivo está no letramento científico, no acolhimento psicológico, na circulação de informações baseadas em evidências e no fortalecimento de vínculos. Dar ao adolescente ferramentas para pensar por conta própria, em vez de apenas proibir, é o caminho mais consistente.</p>
 </div>
 
-<!-- REFERÊNCIAS (p. 15) -->
+<!-- ============ REFERÊNCIAS (p. 15) ============ -->
 <div class="pagina conteudo referencias">
     <span class="page-number">15</span>
     <h2>Referências</h2>
     <p>AMERICAN HEART ASSOCIATION. Cardiopulmonary consequences of vaping in adolescents: a scientific statement from the American Heart Association. <em>Circulation Research</em>, [S.l.], 2022. DOI: 10.1161/RES.0000000000000544. Disponível em: https://www.ahajournals.org/doi/10.1161/RES.0000000000000544. Acesso em: 6 nov. 2026.</p>
+
     <p>AMERICAN LUNG ASSOCIATION. <strong>Popcorn lung risk and e-cigarettes</strong>. [S.l.], 2023. Disponível em: https://www.lung.org/blog/popcorn-lung-risk-ecigs. Acesso em: 6 nov. 2026.</p>
+
     <p>CENTERS FOR DISEASE CONTROL AND PREVENTION. <strong>E-cigarette or vaping product use-associated lung injury (EVALI)</strong>. Atlanta: CDC, 2020. Disponível em: https://stacks.cdc.gov/view/cdc/230908. Acesso em: 6 nov. 2026.</p>
+
     <p>CENTRO DE VALORIZAÇÃO DA VIDA. <strong>Mapa genérico 188</strong>. [S.l.], 2023. Disponível em: https://cvv.org.br. Acesso em: 6 nov. 2026.</p>
+
     <p>INSTITUTO BRASILEIRO DE GEOGRAFIA E ESTATÍSTICA. <strong>Pesquisa Nacional de Saúde do Escolar 2024 (PeNSE)</strong>. Rio de Janeiro: IBGE, 2024. 171 p. Disponível em: https://biblioteca.ibge.gov.br/visualizacao/livros/liv102266.pdf. Acesso em: 6 nov. 2026.</p>
+
     <p>INSTITUTO NACIONAL DE CÂNCER JOSÉ ALENCAR GOMES DA SILVA. <strong>Cigarros eletrônicos: o que sabemos? Estudo sobre a composição do vapor e danos à saúde, o papel na redução de danos e no tratamento da dependência de nicotina</strong>. Rio de Janeiro: INCA, 2016. 120 p. Disponível em: https://www.gov.br/inca. Acesso em: 6 nov. 2026.</p>
+</div>
+
+<!-- ============ REFERÊNCIAS - CONTINUAÇÃO (p. 16) ============ -->
+<div class="pagina conteudo referencias">
+    <span class="page-number">16</span>
     <p>INSTITUTO NACIONAL DE CÂNCER JOSÉ ALENCAR GOMES DA SILVA. <strong>Narguilé: informe técnico</strong>. Rio de Janeiro: INCA, 2015. Disponível em: https://ninho.inca.gov.br. Acesso em: 6 nov. 2026.</p>
+
     <p>LAKICEVIC, N. <em>et al.</em> Effects of alcohol consumption on recovery from resistance exercise: a systematic review. <em>Journal of Functional Morphology and Kinesiology</em>, [S.l.], 2019. Disponível em: https://pmc.ncbi.nlm.nih.gov/articles/PMC7739274. Acesso em: 6 nov. 2026.</p>
+
     <p>ORGANIZAÇÃO MUNDIAL DA SAÚDE. <strong>WHO report on the global tobacco epidemic, 2023: protect people from tobacco smoke</strong>. Genebra: WHO, 2023. 216 p. ISBN 978-92-4-007716-4. Disponível em: https://www.who.int/publications/i/item/9789240077164. Acesso em: 6 nov. 2026.</p>
+
     <p>SILVA, A. L. O. da; MOREIRA, J. C. Sais de nicotina e nicotina sintética: novos desafios para um velho problema. <em>Revista Brasileira de Cancerologia</em>, Rio de Janeiro, v. 68, n. 4, p. e-202846, 2022. DOI: 10.32635/2176-9745.RBC.2022v68n4.2846. Disponível em: https://rbc.inca.gov.br/index.php/revista/article/view/2846. Acesso em: 6 nov. 2026.</p>
+
     <p>SOCIEDADE BRASILEIRA DE PEDIATRIA. <strong>Uso de cigarros eletrônicos e vaporizadores entre crianças e adolescentes: riscos à saúde e dependência</strong>. Rio de Janeiro: SBP, [s.d.]. Guia Prático de Atualização. <em>Apud</em> ACT PROMOÇÃO DA SAÚDE. <strong>Nicotina: o que sabemos? Nota Técnica</strong>. São Paulo: ACT, 2024. Disponível em: https://actbr.org.br. Acesso em: 6 nov. 2026.</p>
 </div>
 
