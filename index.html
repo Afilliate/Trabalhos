@@ -3,288 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabarito Detalhado - Química Orgânica</title>
+    <title>Guia Visual - Química Orgânica</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --card-bg: #ffffff;
-            --success-color: #27ae60;
+            --bg: #f4f7f6;
+            --text: #2d3748;
+            --card: #ffffff;
+            --op-color: #3182ce; /* Azul para Orto/Para */
+            --meta-color: #c53030; /* Vermelho para Meta */
+            --highlight: #ecc94b;
         }
-
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid var(--secondary-color);
-        }
-
-        header h1 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        header p {
-            color: #666;
-            font-size: 1.1em;
-        }
-
-        .question-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--secondary-color);
-        }
-
-        .question-title {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+            padding: 20px;
             display: flex;
+            flex-direction: column;
             align-items: center;
         }
-
-        .question-title span {
-            background-color: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 12px;
-            font-size: 0.9em;
+        .container {
+            max-width: 800px;
+            width: 100%;
         }
-
-        .options {
-            background-color: #f1f3f5;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-family: monospace;
-            font-size: 1.05em;
+        h1 {
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 5px;
         }
-
-        .resolucao-title {
-            color: var(--success-color);
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 1px;
-        }
-
-        .formula {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #c0392b;
-        }
-
-        .dica-professor {
-            background-color: #e8f4f8;
-            border-left: 4px solid var(--secondary-color);
-            padding: 15px;
-            margin-top: 20px;
-            border-radius: 0 8px 8px 0;
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
             font-style: italic;
         }
-
-        .dica-professor strong {
-            color: var(--secondary-color);
-            font-style: normal;
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid #cbd5e0;
         }
-
-        .step-list {
-            margin-left: 20px;
-            padding-left: 0;
+        .card.op-card { border-top-color: var(--op-color); }
+        .card.meta-card { border-top-color: var(--meta-color); }
+        
+        .card h2 { margin-top: 0; }
+        .op-card h2 { color: var(--op-color); }
+        .meta-card h2 { color: var(--meta-color); }
+        
+        /* Estrutura Visual do Benzeno */
+        .benzene-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            position: relative;
         }
-
-        .step-list li {
-            margin-bottom: 10px;
+        .ring-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
         }
+        /* Texto das posições */
+        .pos {
+            position: absolute;
+            font-weight: bold;
+            font-size: 1.1em;
+            background: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .pos-1 { top: 15px; left: 50%; transform: translateX(-50%); color: #2d3748; background: #e2e8f0; border-color: #a0aec0;}
+        
+        .pos-op-1 { top: 55px; right: 30px; color: var(--op-color); border-color: var(--op-color);}
+        .pos-op-2 { top: 55px; left: 30px; color: var(--op-color); border-color: var(--op-color);}
+        
+        .pos-meta-1 { bottom: 55px; right: 30px; color: var(--meta-color); border-color: var(--meta-color);}
+        .pos-meta-2 { bottom: 55px; left: 30px; color: var(--meta-color); border-color: var(--meta-color);}
+        
+        .pos-para { bottom: 15px; left: 50%; transform: translateX(-50%); color: var(--op-color); border-color: var(--op-color);}
 
-        /* Responsividade */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px 15px;
-            }
-            .question-card {
-                padding: 20px;
-            }
+        .group-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0 0;
+        }
+        .group-list li {
+            background: #f7fafc;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 3px solid #a0aec0;
+            display: flex;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+        .group-list.op-list li { border-left-color: var(--op-color); }
+        .group-list.meta-list li { border-left-color: var(--meta-color); }
+        
+        .explanation {
+            font-size: 0.95em;
+            color: #4a5568;
+            margin-top: 10px;
+            line-height: 1.5;
+        }
+        
+        .alert {
+            background: #fff5f5;
+            color: #c53030;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 0.9em;
+            border: 1px solid #feb2b2;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <header>
-        <h1>Resolução Detalhada - Reações Orgânicas</h1>
-        <p>Aula interativa e passo a passo para Vestibular e Graduação</p>
-    </header>
+    <h1>🎯 Consulta Rápida: Anel Aromático</h1>
+    <p class="subtitle">O guia definitivo para acertar as questões de Substituição</p>
 
-    <!-- Questão 1 -->
-    <div class="question-card">
-        <div class="question-title"><span>1</span> Halogenação e Seletividade</div>
-        <p><strong>Enunciado:</strong> O 2-metilbutano reage com <span class="formula">Cl<sub>2</sub></span> sob luz ultravioleta. A halogenação ocorre preferencialmente no carbono:</p>
-        <div class="options">
-            a) primário.<br>
-            b) secundário.<br>
-            c) terciário.<br>
-            d) quaternário.
-        </div>
-
-        <div class="resolucao-title">Resolução Passo a Passo</div>
-        <p><strong>1. Análise da Estrutura:</strong> O 2-metilbutano tem a fórmula <span class="formula">CH<sub>3</sub>-CH(CH<sub>3</sub>)-CH<sub>2</sub>-CH<sub>3</sub></span>.</p>
-        <ul class="step-list">
-            <li>Carbonos primários (ligados a 1 carbono): as três extremidades (CH<sub>3</sub>).</li>
-            <li>Carbono secundário (ligado a 2 carbonos): o CH<sub>2</sub> no meio.</li>
-            <li><strong>Carbono terciário</strong> (ligado a 3 carbonos): o CH central.</li>
-        </ul>
-        <p><strong>2. Conceito de Estabilidade:</strong> A reação via radicais livres forma um intermediário instável. O carbono que formar o radical mais estável será o mais reativo. A estabilidade segue a ordem: Terciário > Secundário > Primário (devido ao efeito indutivo doador dos grupos alquila vizinhos).</p>
-        <p><strong>Conclusão:</strong> O hidrogênio do carbono terciário é o mais facilmente retirado, logo o Cloro se liga preferencialmente a ele.</p>
+    <!-- Explicação das Posições -->
+    <div class="card">
+        <h2>📍 O Mapa do Anel: Onde é Onde?</h2>
+        <p class="explanation">Imagine que o anel é uma mesa redonda com 6 lugares. O <strong>grupo que já está na mesa (posição 1)</strong> é quem manda em quem pode sentar.</p>
         
-        <div class="dica-professor">
-            <strong>Dica do Professor:</strong> O cloro é um halogênio muito reativo e pouco seletivo. Se fosse Bromo (Br<sub>2</sub>), a seletividade pelo carbono terciário seria ainda mais exclusiva (quase 100%).
+        <div class="benzene-visual">
+            <div class="ring-container">
+                <!-- SVG do Anel de Benzeno -->
+                <svg width="250" height="250" viewBox="0 0 100 100">
+                    <!-- Hexágono -->
+                    <polygon points="50,5 93,27.5 93,72.5 50,95 7,72.5 7,27.5" fill="none" stroke="#2d3748" stroke-width="2"/>
+                    <!-- Círculo interno (duplas) -->
+                    <circle cx="50" cy="50" r="20" fill="none" stroke="#2d3748" stroke-width="2"/>
+                    
+                    <!-- Linhas ligando as posições -->
+                    <line x1="50" y1="5" x2="50" y2="-10" stroke="#a0aec0" stroke-width="2" stroke-dasharray="2,2"/>
+                    <line x1="93" y1="27.5" x2="110" y2="20" stroke="#3182ce" stroke-width="2" stroke-dasharray="2,2"/>
+                    <line x1="7" y1="27.5" x2="-10" y2="20" stroke="#3182ce" stroke-width="2" stroke-dasharray="2,2"/>
+                    <line x1="93" y1="72.5" x2="110" y2="80" stroke="#c53030" stroke-width="2" stroke-dasharray="2,2"/>
+                    <line x1="7" y1="72.5" x2="-10" y2="80" stroke="#c53030" stroke-width="2" stroke-dasharray="2,2"/>
+                    <line x1="50" y1="95" x2="50" y2="110" stroke="#3182ce" stroke-width="2" stroke-dasharray="2,2"/>
+                </svg>
+
+                <!-- Textos das posições -->
+                <div class="pos pos-1">1 (Grupo)</div>
+                
+                <div class="pos pos-op-1">2 (Orto)</div>
+                <div class="pos pos-op-2">6 (Orto)</div>
+                
+                <div class="pos pos-meta-1">3 (Meta)</div>
+                <div class="pos pos-meta-2">5 (Meta)</div>
+                
+                <div class="pos pos-para">4 (Para)</div>
+            </div>
         </div>
+        <p class="explanation" style="text-align: center;">
+            <strong style="color: var(--op-color);">Orto</strong> = Vizinhos (2 e 6) | 
+            <strong style="color: var(--meta-color);">Meta</strong> = Um pulo (3 e 5) | 
+            <strong style="color: var(--op-color);">Para</strong> = Em frente (4)
+        </p>
     </div>
 
-    <!-- Questão 2 -->
-    <div class="question-card">
-        <div class="question-title"><span>2</span> Substituição Eletrofílica Aromática</div>
-        <p><strong>Enunciado:</strong> A nitração do ácido benzoico (<span class="formula">C<sub>6</sub>H<sub>5</sub>COOH</span>) resulta predominantemente em:</p>
-        <div class="options">
-            a) ácido o-nitrobenzoico.<br>
-            b) ácido m-nitrobenzoico.<br>
-            c) ácido p-nitrobenzoico.<br>
-            d) uma mistura de orto e para.
-        </div>
-
-        <div class="resolucao-title">Resolução Passo a Passo</div>
-        <p><strong>1. Identificação do Grupo Diretor:</strong> O anel aromático já possui um substituinte: o grupo <strong>Carboxila (-COOH)</strong>.</p>
-        <p><strong>2. Classificação:</strong> O grupo -COOH é um grupo <strong>desativador</strong> (puxa elétrons do anel por indução e ressonância) e <strong>meta-dirigente</strong>.</p>
-        <p><strong>3. Consequência:</strong> Como ele retira densidade eletrônica, as posições <em>orto</em> e <em>para</em> ficam muito pobres em elétrons. O eletrófilo (<span class="formula">NO<sub>2</sub><sup>+</sup></span>) atacará a posição menos desativada, que é a posição <strong>meta</strong>.</p>
+    <!-- Grupos Orto/Para -->
+    <div class="card op-card">
+        <h2>🔵 Grupos Orto e Para-Dirigentes</h2>
+        <p class="explanation">Eles <strong>doam elétrons</strong> para o anel (Ativadores), deixando-o "mais rico". O próximo grupo vai querer entrar nos lugares mais ricos: <strong>Orto e Para</strong>. Eles facilitam a reação!</p>
         
-        <div class="dica-professor">
-            <strong>Dica do Professor:</strong> Memorize os meta-dirigentes! Eles geralmente têm uma ligação dupla com um átomo mais eletronegativo para fora do anel, como -NO<sub>2</sub>, -SO<sub>3</sub>H, -CHO, -COOH, -CN.
+        <ul class="group-list op-list">
+            <li>-CH₃ (Metila / Alquilas)</li>
+            <li>-OH (Hidroxila / Fenol)</li>
+            <li>-NH₂ (Amino)</li>
+            <li>-OCH₃ (Metóxi)</li>
+        </ul>
+
+        <div class="alert">
+            <strong>⚠️ Pegadinha Clássica:</strong> Os <strong>Halogênios (-Cl, -Br, -F, -I)</strong> são Orto/Para-dirigentes, MAS eles "puxam" elétrons (são desativadores). Mesmo assim, a substituição ocorre preferencialmente em Orto e Para!
         </div>
     </div>
 
-    <!-- Questão 3 -->
-    <div class="question-card">
-        <div class="question-title"><span>3</span> Adição a Alcenos (Markovnikov)</div>
-        <p><strong>Enunciado:</strong> A reação de hidrocloração (adição de HCl) do 2-metil-2-buteno (<span class="formula">CH<sub>3</sub>-C(CH<sub>3</sub>)=CH-CH<sub>3</sub></span>) formará como produto principal:</p>
-        <div class="options">
-            a) 2-cloro-2-metilbutano.<br>
-            b) 1-cloro-2-metilbutano.<br>
-            c) 3-cloro-2-metilbutano.<br>
-            d) 2-cloro-3-metilbutano.
-        </div>
-
-        <div class="resolucao-title">Resolução Passo a Passo</div>
-        <p><strong>1. A Regra de Markovnikov:</strong> Em adições de HX a alcenos, o Hidrogênio (H<sup>+</sup>) vai para o carbono da dupla que possui <strong>mais hidrogênios</strong> ligados a ele.</p>
-        <p><strong>2. Análise da Dupla:</strong> No 2-metil-2-buteno, a dupla está entre o Carbono 2 e o Carbono 3.</p>
-        <ul class="step-list">
-            <li>Carbono 2 (esquerda): ligado a dois grupos metila, <strong>zero hidrogênios</strong>.</li>
-            <li>Carbono 3 (direita): ligado a um metila, <strong>um hidrogênio</strong>.</li>
-        </ul>
-        <p><strong>3. Ataque:</strong> O H<sup>+</sup> do HCl vai para o Carbono 3. Isso deixa uma carga positiva (carbocátion) no Carbono 2. Como o Carbono 2 é terciário, esse carbocátion é muito estável. O Cl<sup>-</sup> se liga ao Carbono 2.</p>
-        <p><strong>Produto:</strong> <span class="formula">CH<sub>3</sub>-C(Cl)(CH<sub>3</sub>)-CH<sub>2</sub>-CH<sub>3</sub></span> (2-cloro-2-metilbutano).</p>
-    </div>
-
-    <!-- Questão 4 -->
-    <div class="question-card">
-        <div class="question-title"><span>4</span> Eliminação de Álcoois (Saytzeff)</div>
-        <p><strong>Enunciado:</strong> O composto 2-butanol, ao sofrer desidratação por aquecimento em meio ácido, produz majoritariamente:</p>
-        <div class="options">
-            a) 1-buteno.<br>
-            b) 2-buteno.<br>
-            c) butano.<br>
-            d) éter dietílico.
-        </div>
-
-        <div class="resolucao-title">Resolução Passo a Passo</div>
-        <p><strong>1. Desidratação Intramolecular:</strong> A perda de água (H e OH de carbonos vizinhos) gera uma ligação dupla (alceno).</p>
-        <p><strong>2. Regra de Saytzeff:</strong> O hidrogênio será retirado preferencialmente do carbono <strong>menos hidrogenado</strong>. O objetivo é formar o alceno mais estável, ou seja, aquele com o maior número de grupos alquila ligados à dupla (alceno mais substituído).</p>
-        <p><strong>3. Analisando o 2-butanol:</strong> <span class="formula">CH<sub>3</sub>-CH(OH)-CH<sub>2</sub>-CH<sub>3</sub></span></p>
-        <ul class="step-list">
-            <li>Tirando H do C1 (ponta): forma <strong>1-buteno</strong> (dupla na ponta, menos estável).</li>
-            <li>Tirando H do C3 (meio): forma <strong>2-buteno</strong> (<span class="formula">CH<sub>3</sub>-CH=CH-CH<sub>3</sub></span>), que é um alceno interno e mais estável.</li>
-        </ul>
-        <p><strong>Conclusão:</strong> O 2-buteno é o produto majoritário (Regra de Saytzeff).</p>
-    </div>
-
-    <!-- Questão 5 -->
-    <div class="question-card">
-        <div class="question-title"><span>5</span> Oxidação de Álcoois</div>
-        <p><strong>Enunciado:</strong> Qual dos álcoois abaixo, ao ser submetido a uma oxidação enérgica (com KMnO<sub>4</sub> em meio ácido), produzirá uma cetona?</p>
-        <div class="options">
-            a) metanol.<br>
-            b) etanol.<br>
-            c) 1-propanol.<br>
-            d) 2-propanol.<br>
-            e) 2-metil-1-propanol.
-        </div>
-
-        <div class="resolucao-title">Resolução Passo a Passo</div>
-        <p><strong>1. O Segredo da Oxidação:</strong> O agente oxidante ataca o carbono que possui a hidroxila (-OH), chamado carbono carbinólico. Para a reação continuar, ele precisa arrancar um Hidrogênio desse carbono.</p>
-        <ul class="step-list">
-            <li><strong>Álcool Primário:</strong> Tem 2 H's no carbono. Oxida para Aldeído e depois para Ácido Carboxílico (ex: metanol, etanol, 1-propanol).</li>
-            <li><strong>Álcool Secundário:</strong> Tem apenas 1 H. Oxida para <strong>Cetona</strong> e para por aí (não tem mais H para sair).</li>
-            <li><strong>Álcool Terciário:</strong> Tem zero H no carbono. Não oxida.</li>
-        </ul>
-        <p><strong>2. Analisando as opções:</strong> Precisamos de um álcool secundário. O <strong>2-propanol</strong> (isopropanol) tem a estrutura <span class="formula">CH<sub>3</sub>-CH(OH)-CH<sub>3</sub></span>. O carbono do meio está ligado a dois carbonos e a um H. Ao oxidar, vira propanona (acetona), que é uma cetona.</p>
-    </div>
-
-    <!-- Questão 6 -->
-    <div class="question-card">
-        <div class="question-title"><span>6</span> Esterificação</div>
-        <p><strong>Enunciado:</strong> O composto formado pela reação entre o ácido acético e o etanol, na presença de ácido sulfúrico como catalisador, é:</p>
-        <div class="options">
-            a) um éter.<br>
-            b) uma cetona.<br>
-            c) um éster.<br>
-            d) um aldeído.<br>
-            e) um sal orgânico.
-        </div>
-
-        <div class="resolucao-title">Resolução Passo a Passo</div>
-        <p><strong>1. Reconhecendo os Reagentes:</strong></p>
-        <ul class="step-list">
-            <li>Ácido acético = Ácido etanoico (<span class="formula">CH<sub>3</sub>COOH</span>).</li>
-            <li>Etanol = Álcool etílico (<span class="formula">CH<sub>3</sub>CH<sub>2</sub>OH</span>).</li>
-        </ul>
-        <p><strong>2. O Mecanismo (Esterificação de Fischer):</strong> É uma reação reversível (catalisada por H<sub>2</sub>SO<sub>4</sub>), onde o ácido carboxílico reage com o álcool perdendo uma molécula de água.</p>
-        <p><strong>Equação:</strong> <span class="formula">CH<sub>3</sub>COOH + HO-CH<sub>2</sub>CH<sub>3</sub> ⇌ CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub> + H<sub>2</sub>O</span></p>
-        <p><strong>3. Identificação:</strong> O composto formado (<span class="formula">CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub></span>) é o <strong>Etanoato de etila</strong> (ou acetato de etila), que pertence à função orgânica <strong>Éster</strong>.</p>
+    <!-- Grupos Meta -->
+    <div class="card meta-card">
+        <h2>🔴 Grupos Meta-Dirigentes</h2>
+        <p class="explanation">Eles <strong>puxam elétrons</strong> do anel (Desativadores), deixando-o "pobre" e difícil de reagir. Como as posições Orto e Para ficam muito pobres, o novo grupo é forçado a entrar na posição <strong>Meta</strong>, que é a menos ruim. Eles dificultam a reação!</p>
         
-        <div class="dica-professor">
-            <strong>Dica do Professor:</strong> A regra de nomenclatura de ésteres é: [Nome do ácido sem "ico" + ato] de [Nome do álcool + ila]. Exemplo: Ácido acét<strong>ico</strong> + etan<strong>ol</strong> = Acet<strong>ato</strong> de et<strong>ila</strong>.
-        </div>
+        <ul class="group-list meta-list">
+            <li>-NO₂ (Nitro)</li>
+            <li>-SO₃H (Sulfônico)</li>
+            <li>-COOH (Carboxila)</li>
+            <li>-CN (Cianeto)</li>
+            <li>-CHO (Aldeído)</li>
+        </ul>
+    </div>
+
+    <div class="card" style="border-top-color: #ecc94b; background-color: #fffff0;">
+        <h2 style="color: #b7791f;">💡 Dica de Prova (Amanhã!)</h2>
+        <p class="explanation">Na hora da prova, com o livro aberto, faça o seguinte:</p>
+        <ol style="line-height: 1.8; font-size: 0.95em; color: #4a5568; padding-left: 20px;">
+            <li>Identifique o grupo que <strong>já está no anel</strong>.</li>
+            <li>Procure na sua tabela do livro (ou memorize pelo mapa acima): Ele tem uma ligação dupla com Oxigênio ou Nitrogênio para fora? (Ex: -NO₂, -COOH) -> <strong>META</strong>.</li>
+            <li>É um grupo com apenas carbono, hidrogênio, ou O/N com elétrons "sobrando"? (Ex: -CH₃, -OH, -NH₂) -> <strong>ORTO/PARA</strong>.</li>
+            <li><strong>Halogênios (-Cl, -Br):</strong> Sempre Orto/Para.</li>
+        </ol>
     </div>
 
 </div>
