@@ -3,335 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABNT - Saúde Mental e Exercício Físico</title>
+    <title>Gabarito Detalhado - Química Orgânica</title>
     <style>
-        @page { size: A4; margin: 0; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --success-color: #27ae60;
+        }
 
         body {
-            background: #e0e0e0;
-            display: flex; flex-direction: column; align-items: center;
-            font-family: Arial, sans-serif; font-size: 12pt;
-            line-height: 1.5; color: #000;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
         }
 
-        .pagina {
-            width: 210mm;
-            min-height: 297mm;
-            max-height: 297mm;
-            overflow: hidden;
-            background: #ffffff;
-            margin: 10mm auto;
-            padding: 30mm 20mm 20mm 30mm;
-            box-shadow: 0 0 8px rgba(0,0,0,0.2);
-            page-break-after: always;
-            position: relative;
-        }
-        .pagina:last-child { page-break-after: auto; }
-
-        .page-number {
-            position: absolute; top: 2cm; right: 2cm;
-            font-family: Arial, sans-serif; font-size: 10pt;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        /* CAPA */
-        .capa {
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center; text-align: center;
-        }
-        .capa .instituicao { font-weight: bold; font-size: 14pt; margin-bottom: 2em; }
-        .capa .autor { font-weight: bold; font-size: 12pt; margin-bottom: 3em; }
-        .capa .titulo {
-            font-weight: bold; font-size: 14pt;
-            text-transform: uppercase; margin-bottom: 3em;
-        }
-        .capa .cidade { font-size: 12pt; margin-top: 6em; }
-
-        /* FOLHA DE ROSTO */
-        .folharosto { display: flex; flex-direction: column; text-align: left; }
-        .folharosto .autor {
-            font-weight: bold; font-size: 12pt;
-            margin-bottom: 2em; text-align: center;
-        }
-        .folharosto .titulo {
-            font-weight: bold; font-size: 14pt;
-            text-transform: uppercase; margin-bottom: 2em; text-align: center;
-        }
-        .folharosto .natureza {
-            font-size: 12pt; text-align: justify;
-            margin: 0 0 2em 4.5cm; text-indent: 0;
-        }
-        .folharosto .orientador {
-            font-size: 12pt; text-align: right;
-            margin: 0 0 2em 0; text-indent: 0;
-        }
-        .folharosto .cidade { font-size: 12pt; margin-top: 6em; text-align: center; }
-
-        /* RESUMO */
-        .resumo h1 {
-            text-align: center; font-size: 12pt;
-            text-transform: uppercase; margin-bottom: 1.5em; font-weight: bold;
-        }
-        .resumo .texto-resumo {
-            text-align: justify; text-indent: 0;
-            line-height: 1.0; font-size: 12pt; margin-bottom: 1.5em;
-        }
-        .resumo .palavras-chave {
-            text-align: justify; text-indent: 0;
-            line-height: 1.0; font-size: 12pt;
-        }
-
-        /* SUMÁRIO */
-        .sumario h1 {
-            text-align: center; font-size: 12pt;
-            text-transform: uppercase; margin-bottom: 1.5em; font-weight: bold;
-        }
-        .sumario ul { list-style: none; padding-left: 0; }
-        .sumario li {
-            font-size: 12pt; margin-bottom: 0.35em;
-            text-indent: 0; text-align: left;
-        }
-        .sumario .item { display: flex; align-items: baseline; }
-        .sumario .item .titulo { flex: 0 0 auto; }
-        .sumario .item .dots {
-            flex: 1 1 auto; border-bottom: 1px dotted #000;
-            margin: 0 0.5em; transform: translateY(-0.2em);
-        }
-        .sumario .item .numero { flex: 0 0 auto; }
-
-        /* CONTEÚDO */
-        .conteudo {
-            font-family: Arial, sans-serif; font-size: 12pt;
-            line-height: 1.5; color: #000;
-        }
-        .conteudo h2 {
-            font-size: 12pt; text-transform: uppercase;
-            margin-top: 1.5em; margin-bottom: 1.5em;
-            text-align: left; font-weight: bold;
-            page-break-after: avoid;
-        }
-        .conteudo > h2:first-of-type { margin-top: 0; }
-        .conteudo p {
-            text-indent: 1.25cm; text-align: justify;
-            margin-bottom: 0.75em;
-            orphans: 3; widows: 3;
-        }
-
-        /* FIGURAS */
-        .figura {
+        header {
             text-align: center;
-            margin: 0.4em 0 0.6em 0;
-            page-break-inside: avoid;
-        }
-        .figura img {
-            max-width: 100%;
-            max-height: 4cm;
-            width: auto; height: auto;
-            display: block; margin: 0 auto;
-        }
-        .figura figcaption {
-            font-size: 10pt; line-height: 1.15;
-            margin-top: 0.25em; text-align: center;
-            text-indent: 0; color: #000;
-        }
-        .figura figcaption .fonte {
-            display: block; font-size: 10pt; margin-top: 0.1em;
+            margin-bottom: 50px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--secondary-color);
         }
 
-        /* REFERÊNCIAS (NBR 6023) */
-        .conteudo .referencias h2 {
-            text-align: center; margin-bottom: 1.5em;
+        header h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
         }
-        .conteudo .referencias p {
-            font-size: 12pt; line-height: 1.0;
-            text-align: left; text-indent: 0;
-            margin-bottom: 1em;
-            overflow-wrap: anywhere; word-wrap: break-word;
-        }
-        .conteudo .referencias strong { font-weight: bold; }
-        .conteudo .referencias em { font-style: italic; }
 
-        /* IMPRESSÃO */
-        @media print {
-            body { background: none; }
-            .pagina { box-shadow: none; margin: 0; }
+        header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .question-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .question-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .question-title span {
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 12px;
+            font-size: 0.9em;
+        }
+
+        .options {
+            background-color: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            font-size: 1.05em;
+        }
+
+        .resolucao-title {
+            color: var(--success-color);
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        .formula {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #c0392b;
+        }
+
+        .dica-professor {
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        .dica-professor strong {
+            color: var(--secondary-color);
+            font-style: normal;
+        }
+
+        .step-list {
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .step-list li {
+            margin-bottom: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .question-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ============ CAPA ============ -->
-<div class="pagina capa">
-    <p class="instituicao">COLÉGIO UNICULTURA</p>
-    <p class="autor">
-        Bárbara Pereira Rodacki<br>
-        Kailayne Santos Sousa<br>
-        Mariana Martis de Fátima Freitas<br>
-        Sofia Ribeiro Taveira
-    </p>
-    <h1 class="titulo">Saúde Mental e Exercício Físico:<br>O Impacto do Movimento na Qualidade de Vida e no Enfrentamento dos Desafios Psicossociais na Adolescência Contemporânea</h1>
-    <p class="cidade">Guarulhos<br>2026</p>
-</div>
+<div class="container">
+    <header>
+        <h1>Resolução Detalhada - Reações Orgânicas</h1>
+        <p>Aula interativa e passo a passo para Vestibular e Graduação</p>
+    </header>
 
-<!-- ============ FOLHA DE ROSTO (p. 1) ============ -->
-<div class="pagina folharosto">
-    <p class="autor">
-        Bárbara Pereira Rodacki<br>
-        Kailayne Santos Sousa<br>
-        Mariana Martis de Fátima Freitas<br>
-        Sofia Ribeiro Taveira
-    </p>
-    <h1 class="titulo">Saúde Mental e Exercício Físico:<br>O Impacto do Movimento na Qualidade de Vida e no Enfrentamento dos Desafios Psicossociais na Adolescência Contemporânea</h1>
-    <p class="natureza">Trabalho apresentado ao Colégio Unicultura, como requisito parcial para avaliação na disciplina de Educação Física, sob orientação do Prof. Marco Duran.</p>
-    <p class="orientador">Orientador: Prof. Marco Duran</p>
-    <p class="cidade">Guarulhos<br>2026</p>
-</div>
+    <!-- Questão 1 -->
+    <div class="question-card">
+        <div class="question-title"><span>1</span> Halogenação e Seletividade</div>
+        <p><strong>Enunciado:</strong> O 2-metilbutano reage com <span class="formula">Cl<sub>2</sub></span> sob luz ultravioleta. A halogenação ocorre preferencialmente no carbono:</p>
+        <div class="options">
+            a) primário.<br>
+            b) secundário.<br>
+            c) terciário.<br>
+            d) quaternário.
+        </div>
 
-<!-- ============ RESUMO (p. 2) ============ -->
-<div class="pagina resumo">
-    <h1>Resumo</h1>
-    <p class="texto-resumo">Este trabalho investiga a relação entre exercício físico e saúde mental na adolescência contemporânea, partindo do agravamento dos índices de estresse crônico entre jovens, evidenciado após a pandemia de covid-19. Discutem-se a definição de saúde mental proposta pela OMS (2022), as transformações neurobiológicas próprias da adolescência descritas por Parker et al. (2020) e o impacto da privação de sono sobre o eixo hormonal do estresse. Em seguida, apresentam-se os mecanismos neurobiológicos pelos quais a atividade física atua sobre o humor — liberação de endorfina, serotonina e dopamina, além do estímulo à expressão do BDNF no hipocampo —, com base em Deslandes et al. (2009) e Peluso e Guerra de Andrade (2005). A revisão de Singh et al. (2012) sustenta a associação entre movimento e melhor desempenho acadêmico, e a análise psicossocial destaca ganhos de autoimagem e de competência motora. Por fim, discutem-se as diretrizes da OMS (2020), as barreiras à busca por ajuda identificadas por Fukuda et al. (2016) e os limites da atividade física como estratégia isolada. Conclui-se que o movimento corporal, aliado à informação qualificada e ao acolhimento, constitui eixo central de promoção da saúde mental juvenil.</p>
-    <p class="palavras-chave"><strong>Palavras-chave:</strong> Adolescência. Saúde mental. Exercício físico. Neurobiologia. Qualidade de vida.</p>
-</div>
+        <div class="resolucao-title">Resolução Passo a Passo</div>
+        <p><strong>1. Análise da Estrutura:</strong> O 2-metilbutano tem a fórmula <span class="formula">CH<sub>3</sub>-CH(CH<sub>3</sub>)-CH<sub>2</sub>-CH<sub>3</sub></span>.</p>
+        <ul class="step-list">
+            <li>Carbonos primários (ligados a 1 carbono): as três extremidades (CH<sub>3</sub>).</li>
+            <li>Carbono secundário (ligado a 2 carbonos): o CH<sub>2</sub> no meio.</li>
+            <li><strong>Carbono terciário</strong> (ligado a 3 carbonos): o CH central.</li>
+        </ul>
+        <p><strong>2. Conceito de Estabilidade:</strong> A reação via radicais livres forma um intermediário instável. O carbono que formar o radical mais estável será o mais reativo. A estabilidade segue a ordem: Terciário > Secundário > Primário (devido ao efeito indutivo doador dos grupos alquila vizinhos).</p>
+        <p><strong>Conclusão:</strong> O hidrogênio do carbono terciário é o mais facilmente retirado, logo o Cloro se liga preferencialmente a ele.</p>
+        
+        <div class="dica-professor">
+            <strong>Dica do Professor:</strong> O cloro é um halogênio muito reativo e pouco seletivo. Se fosse Bromo (Br<sub>2</sub>), a seletividade pelo carbono terciário seria ainda mais exclusiva (quase 100%).
+        </div>
+    </div>
 
-<!-- ============ SUMÁRIO (p. 3) ============ -->
-<div class="pagina sumario">
-    <h1>Sumário</h1>
-    <ul>
-        <li class="item"><span class="titulo">1 Introdução</span><span class="dots"></span><span class="numero">4</span></li>
-        <li class="item"><span class="titulo">2 Saúde Mental e Adolescência Contemporânea</span><span class="dots"></span><span class="numero">5</span></li>
-        <li class="item"><span class="titulo">3 O Sono como Eixo Vulnerável</span><span class="dots"></span><span class="numero">6</span></li>
-        <li class="item"><span class="titulo">4 Exercício Físico e Saúde Mental: Mecanismos Neurobiológicos</span><span class="dots"></span><span class="numero">7</span></li>
-        <li class="item"><span class="titulo">5 Desempenho Acadêmico e Benefícios Psicossociais</span><span class="dots"></span><span class="numero">8</span></li>
-        <li class="item"><span class="titulo">6 Lazer Ativo e Qualidade de Vida</span><span class="dots"></span><span class="numero">9</span></li>
-        <li class="item"><span class="titulo">7 Limites e Barreiras à Busca por Ajuda</span><span class="dots"></span><span class="numero">10</span></li>
-        <li class="item"><span class="titulo">8 Considerações Finais</span><span class="dots"></span><span class="numero">11</span></li>
-        <li class="item"><span class="titulo">Referências</span><span class="dots"></span><span class="numero">12</span></li>
-    </ul>
-</div>
+    <!-- Questão 2 -->
+    <div class="question-card">
+        <div class="question-title"><span>2</span> Substituição Eletrofílica Aromática</div>
+        <p><strong>Enunciado:</strong> A nitração do ácido benzoico (<span class="formula">C<sub>6</sub>H<sub>5</sub>COOH</span>) resulta predominantemente em:</p>
+        <div class="options">
+            a) ácido o-nitrobenzoico.<br>
+            b) ácido m-nitrobenzoico.<br>
+            c) ácido p-nitrobenzoico.<br>
+            d) uma mistura de orto e para.
+        </div>
 
-<!-- ============ 1 INTRODUÇÃO (p. 4) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">4</span>
-    <h2>1 Introdução</h2>
-    <p>Em 2021, a American Psychological Association publicou um relatório cujo título dispensava otimismo: <em>One year later, a new wave of pandemic health concerns</em>. Entre os achados, um que interessa diretamente a este texto: jovens adultos figuravam entre os grupos mais afetados por estresse crônico. Não se trata de um fenômeno inteiramente novo, mas de um agravamento de algo que a pandemia apenas tornou visível. A questão que se coloca, portanto, não é se os adolescentes sofrem — eles sofrem —, mas o que fazer com esse sofrimento.</p>
-    <p>Este trabalho parte dessa pergunta para investigar o papel do exercício físico na promoção da saúde mental juvenil. Defende-se que o movimento corporal, longe de ser apenas uma prática de condicionamento, funciona como ferramenta neurobiológica e psicossocial de enfrentamento dos desafios próprios da adolescência contemporânea.</p>
+        <div class="resolucao-title">Resolução Passo a Passo</div>
+        <p><strong>1. Identificação do Grupo Diretor:</strong> O anel aromático já possui um substituinte: o grupo <strong>Carboxila (-COOH)</strong>.</p>
+        <p><strong>2. Classificação:</strong> O grupo -COOH é um grupo <strong>desativador</strong> (puxa elétrons do anel por indução e ressonância) e <strong>meta-dirigente</strong>.</p>
+        <p><strong>3. Consequência:</strong> Como ele retira densidade eletrônica, as posições <em>orto</em> e <em>para</em> ficam muito pobres em elétrons. O eletrófilo (<span class="formula">NO<sub>2</sub><sup>+</sup></span>) atacará a posição menos desativada, que é a posição <strong>meta</strong>.</p>
+        
+        <div class="dica-professor">
+            <strong>Dica do Professor:</strong> Memorize os meta-dirigentes! Eles geralmente têm uma ligação dupla com um átomo mais eletronegativo para fora do anel, como -NO<sub>2</sub>, -SO<sub>3</sub>H, -CHO, -COOH, -CN.
+        </div>
+    </div>
 
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_143646452_plw0k5.png" alt="Gráfico do relatório Stress in America 2021 (APA) sobre níveis de estresse entre jovens adultos">
-        <figcaption>Figura 1 – Níveis de estresse entre jovens adultos segundo o relatório Stress in America 2021.<span class="fonte">Fonte: elaborado pelos autores (2026) com base em APA (2021).</span></figcaption>
-    </figure>
-</div>
+    <!-- Questão 3 -->
+    <div class="question-card">
+        <div class="question-title"><span>3</span> Adição a Alcenos (Markovnikov)</div>
+        <p><strong>Enunciado:</strong> A reação de hidrocloração (adição de HCl) do 2-metil-2-buteno (<span class="formula">CH<sub>3</sub>-C(CH<sub>3</sub>)=CH-CH<sub>3</sub></span>) formará como produto principal:</p>
+        <div class="options">
+            a) 2-cloro-2-metilbutano.<br>
+            b) 1-cloro-2-metilbutano.<br>
+            c) 3-cloro-2-metilbutano.<br>
+            d) 2-cloro-3-metilbutano.
+        </div>
 
-<!-- ============ 2 SAÚDE MENTAL E ADOLESCÊNCIA (p. 5) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">5</span>
-    <h2>2 Saúde Mental e Adolescência Contemporânea</h2>
-    <p>A OMS (2022) define saúde mental como um estado dinâmico de bem-estar biopsicossocial, e não como a mera ausência de transtornos. A definição é generosa, mas corre o risco de soar abstrata. Na prática, significa que um adolescente saudável não é apenas aquele que não tem diagnóstico, mas aquele que consegue estudar, conviver, lidar com frustrações e dormir. Parece pouco. Não é.</p>
-    <p>A adolescência, afinal, é um período de atrito. De um lado, a biologia: Parker et al. (2020), em estudo publicado no <em>JAMA Psychiatry</em>, descrevem o afinamento cortical que acompanha o amadurecimento cerebral — um processo que prepara o jovem para a vida adulta, mas que também o torna particularmente sensível ao ambiente. Do outro lado, a cultura: a cobrança por desempenho, a preparação precoce para o ENEM, a comparação permanente nas redes sociais. O atrito entre esses dois planos não é acidente; é a condição da fase. O problema é quando ele se torna crônico.</p>
+        <div class="resolucao-title">Resolução Passo a Passo</div>
+        <p><strong>1. A Regra de Markovnikov:</strong> Em adições de HX a alcenos, o Hidrogênio (H<sup>+</sup>) vai para o carbono da dupla que possui <strong>mais hidrogênios</strong> ligados a ele.</p>
+        <p><strong>2. Análise da Dupla:</strong> No 2-metil-2-buteno, a dupla está entre o Carbono 2 e o Carbono 3.</p>
+        <ul class="step-list">
+            <li>Carbono 2 (esquerda): ligado a dois grupos metila, <strong>zero hidrogênios</strong>.</li>
+            <li>Carbono 3 (direita): ligado a um metila, <strong>um hidrogênio</strong>.</li>
+        </ul>
+        <p><strong>3. Ataque:</strong> O H<sup>+</sup> do HCl vai para o Carbono 3. Isso deixa uma carga positiva (carbocátion) no Carbono 2. Como o Carbono 2 é terciário, esse carbocátion é muito estável. O Cl<sup>-</sup> se liga ao Carbono 2.</p>
+        <p><strong>Produto:</strong> <span class="formula">CH<sub>3</sub>-C(Cl)(CH<sub>3</sub>)-CH<sub>2</sub>-CH<sub>3</sub></span> (2-cloro-2-metilbutano).</p>
+    </div>
 
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_143829753_dzm0ik.png" alt="Infográfico sobre saúde mental na adolescência segundo a OMS">
-        <figcaption>Figura 2 – Saúde mental na adolescência: um estado dinâmico de bem-estar biopsicossocial.<span class="fonte">Fonte: elaborado pelos autores (2026) com base em OMS (2022).</span></figcaption>
-    </figure>
-</div>
+    <!-- Questão 4 -->
+    <div class="question-card">
+        <div class="question-title"><span>4</span> Eliminação de Álcoois (Saytzeff)</div>
+        <p><strong>Enunciado:</strong> O composto 2-butanol, ao sofrer desidratação por aquecimento em meio ácido, produz majoritariamente:</p>
+        <div class="options">
+            a) 1-buteno.<br>
+            b) 2-buteno.<br>
+            c) butano.<br>
+            d) éter dietílico.
+        </div>
 
-<!-- ============ 3 SONO (p. 6) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">6</span>
-    <h2>3 O Sono como Eixo Vulnerável</h2>
-    <p>Um dos primeiros sistemas a sentir o impacto é o sono. A privação crônica — causada tanto pelo excesso de tarefas quanto pela exposição noturna à luz azul — prejudica a consolidação de memórias, reduz a atenção e compromete a neuroplasticidade. Do ponto de vista endócrino, eleva de forma persistente os níveis de cortisol e adrenalina, hormônios que alimentam um estado inflamatório e retroalimentam a ansiedade.</p>
-    <p>Forma-se um ciclo: o cansaço aumenta a reatividade ao estresse, a mente exausta não processa bem as demandas intelectuais e a ansiedade resultante dificulta o adormecer. É um sistema que se fecha sobre si mesmo.</p>
+        <div class="resolucao-title">Resolução Passo a Passo</div>
+        <p><strong>1. Desidratação Intramolecular:</strong> A perda de água (H e OH de carbonos vizinhos) gera uma ligação dupla (alceno).</p>
+        <p><strong>2. Regra de Saytzeff:</strong> O hidrogênio será retirado preferencialmente do carbono <strong>menos hidrogenado</strong>. O objetivo é formar o alceno mais estável, ou seja, aquele com o maior número de grupos alquila ligados à dupla (alceno mais substituído).</p>
+        <p><strong>3. Analisando o 2-butanol:</strong> <span class="formula">CH<sub>3</sub>-CH(OH)-CH<sub>2</sub>-CH<sub>3</sub></span></p>
+        <ul class="step-list">
+            <li>Tirando H do C1 (ponta): forma <strong>1-buteno</strong> (dupla na ponta, menos estável).</li>
+            <li>Tirando H do C3 (meio): forma <strong>2-buteno</strong> (<span class="formula">CH<sub>3</sub>-CH=CH-CH<sub>3</sub></span>), que é um alceno interno e mais estável.</li>
+        </ul>
+        <p><strong>Conclusão:</strong> O 2-buteno é o produto majoritário (Regra de Saytzeff).</p>
+    </div>
 
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_144047897_rostmn.png" alt="Diagrama do ciclo sono-ansiedade na adolescência">
-        <figcaption>Figura 3 – O ciclo de retroalimentação entre privação de sono e ansiedade.<span class="fonte">Fonte: elaborado pelos autores (2026).</span></figcaption>
-    </figure>
-</div>
+    <!-- Questão 5 -->
+    <div class="question-card">
+        <div class="question-title"><span>5</span> Oxidação de Álcoois</div>
+        <p><strong>Enunciado:</strong> Qual dos álcoois abaixo, ao ser submetido a uma oxidação enérgica (com KMnO<sub>4</sub> em meio ácido), produzirá uma cetona?</p>
+        <div class="options">
+            a) metanol.<br>
+            b) etanol.<br>
+            c) 1-propanol.<br>
+            d) 2-propanol.<br>
+            e) 2-metil-1-propanol.
+        </div>
 
-<!-- ============ 4 MECANISMOS (p. 7) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">7</span>
-    <h2>4 Exercício Físico e Saúde Mental: Mecanismos Neurobiológicos</h2>
-    <p>A atividade física rompe esse ciclo — não por mágica, mas por mecanismos relativamente bem descritos. O movimento desencadeia a liberação de neurotransmissores: endorfina, associada a sensações de prazer e relaxamento; serotonina, implicada na estabilização do humor e na regulação do sono; dopamina, ligada à motivação e ao foco. Além disso, o exercício estimula a expressão do BDNF no hipocampo, proteína importante para a neurogênese e para a proteção contra os efeitos do estresse crônico.</p>
-    <p>Deslandes et al. (2009) e Peluso e Guerra de Andrade (2005) revisaram essas evidências e concluíram que os mecanismos explicam parte do efeito ansiolítico e antidepressivo do exercício. Vale notar, no entanto, que a maior parte desses estudos foi conduzida com adultos — a transposição para adolescentes é razoável, mas não automática. É uma inferência, não um dado.</p>
+        <div class="resolucao-title">Resolução Passo a Passo</div>
+        <p><strong>1. O Segredo da Oxidação:</strong> O agente oxidante ataca o carbono que possui a hidroxila (-OH), chamado carbono carbinólico. Para a reação continuar, ele precisa arrancar um Hidrogênio desse carbono.</p>
+        <ul class="step-list">
+            <li><strong>Álcool Primário:</strong> Tem 2 H's no carbono. Oxida para Aldeído e depois para Ácido Carboxílico (ex: metanol, etanol, 1-propanol).</li>
+            <li><strong>Álcool Secundário:</strong> Tem apenas 1 H. Oxida para <strong>Cetona</strong> e para por aí (não tem mais H para sair).</li>
+            <li><strong>Álcool Terciário:</strong> Tem zero H no carbono. Não oxida.</li>
+        </ul>
+        <p><strong>2. Analisando as opções:</strong> Precisamos de um álcool secundário. O <strong>2-propanol</strong> (isopropanol) tem a estrutura <span class="formula">CH<sub>3</sub>-CH(OH)-CH<sub>3</sub></span>. O carbono do meio está ligado a dois carbonos e a um H. Ao oxidar, vira propanona (acetona), que é uma cetona.</p>
+    </div>
 
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_144952137_hefdct.png" alt="Infográfico sobre a liberação de endorfina, serotonina, dopamina e BDNF durante o exercício">
-        <figcaption>Figura 4 – Neurotransmissores e BDNF mobilizados pela atividade física.<span class="fonte">Fonte: elaborado pelos autores (2026) com base em Deslandes et al. (2009) e Peluso e Guerra de Andrade (2005).</span></figcaption>
-    </figure>
-</div>
+    <!-- Questão 6 -->
+    <div class="question-card">
+        <div class="question-title"><span>6</span> Esterificação</div>
+        <p><strong>Enunciado:</strong> O composto formado pela reação entre o ácido acético e o etanol, na presença de ácido sulfúrico como catalisador, é:</p>
+        <div class="options">
+            a) um éter.<br>
+            b) uma cetona.<br>
+            c) um éster.<br>
+            d) um aldeído.<br>
+            e) um sal orgânico.
+        </div>
 
-<!-- ============ 5 DESEMPENHO E PSICOSSOCIAIS (p. 8) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">8</span>
-    <h2>5 Desempenho Acadêmico e Benefícios Psicossociais</h2>
-    <p>Há um efeito que dialoga diretamente com a rotina escolar: Singh et al. (2012), em revisão sistemática, encontraram associação entre atividade física e melhor desempenho acadêmico. O achado sugere que o movimento não compete com o estudo — pode favorecê-lo. A intuição contrária, que trata o exercício como perda de tempo, não se sustenta nos dados.</p>
-    <p>Os benefícios também alcançam a esfera psicossocial. A prática regular melhora a percepção da autoimagem corporal, oferece ao jovem uma sensação concreta de competência motora e reduz distorções perceptivas comuns nessa faixa etária. O engajamento com o próprio corpo cria métricas palpáveis de evolução — resistência, força, progresso — que contrastam com a lógica abstrata da validação digital.</p>
-    <p>No plano social, o esporte tem se mostrado uma alternativa concreta contra o isolamento. Modalidades individuais, como corrida e natação, conduzem a um processo de autoconhecimento e introspecção; modalidades coletivas, como futebol e voleibol, criam espaços de convivência em que o adolescente exercita alteridade, comunicação e empatia. São dinâmicas distintas, e ambas têm valor — não se trata de eleger uma superior à outra.</p>
+        <div class="resolucao-title">Resolução Passo a Passo</div>
+        <p><strong>1. Reconhecendo os Reagentes:</strong></p>
+        <ul class="step-list">
+            <li>Ácido acético = Ácido etanoico (<span class="formula">CH<sub>3</sub>COOH</span>).</li>
+            <li>Etanol = Álcool etílico (<span class="formula">CH<sub>3</sub>CH<sub>2</sub>OH</span>).</li>
+        </ul>
+        <p><strong>2. O Mecanismo (Esterificação de Fischer):</strong> É uma reação reversível (catalisada por H<sub>2</sub>SO<sub>4</sub>), onde o ácido carboxílico reage com o álcool perdendo uma molécula de água.</p>
+        <p><strong>Equação:</strong> <span class="formula">CH<sub>3</sub>COOH + HO-CH<sub>2</sub>CH<sub>3</sub> ⇌ CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub> + H<sub>2</sub>O</span></p>
+        <p><strong>3. Identificação:</strong> O composto formado (<span class="formula">CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub></span>) é o <strong>Etanoato de etila</strong> (ou acetato de etila), que pertence à função orgânica <strong>Éster</strong>.</p>
+        
+        <div class="dica-professor">
+            <strong>Dica do Professor:</strong> A regra de nomenclatura de ésteres é: [Nome do ácido sem "ico" + ato] de [Nome do álcool + ila]. Exemplo: Ácido acét<strong>ico</strong> + etan<strong>ol</strong> = Acet<strong>ato</strong> de et<strong>ila</strong>.
+        </div>
+    </div>
 
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_145315101_z7xx1h.png" alt="Gráfico da revisão sistemática de Singh et al. sobre atividade física e desempenho acadêmico">
-        <figcaption>Figura 5 – Associação entre atividade física e desempenho acadêmico segundo Singh et al. (2012).<span class="fonte">Fonte: elaborado pelos autores (2026) com base em Singh et al. (2012).</span></figcaption>
-    </figure>
-</div>
-
-<!-- ============ 6 LAZER ATIVO (p. 9) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">9</span>
-    <h2>6 Lazer Ativo e Qualidade de Vida</h2>
-    <p>O lazer ativo — atividades físicas voluntárias praticadas por prazer — consolida-se como parte indissociável da qualidade de vida. Integrar o movimento à rotina não exige treinos exaustivos. Pode-se adotar transporte ativo, fazer pausas de alongamento a cada bloco prolongado de estudo, escolher uma atividade recreativa prazerosa.</p>
-    <p>As diretrizes da OMS (2020) recomendam, para adolescentes de 5 a 17 anos, uma média de 60 minutos diários de atividade moderada a vigorosa, além de fortalecimento muscular e ósseo ao menos três vezes por semana. A recomendação é útil como parâmetro, mas peca por otimismo: para um estudante que passa o dia em cursinho, 60 minutos diários podem soar inalcançáveis. Talvez seja mais realista começar por menos — e sustentar o hábito.</p>
-    <p>Cardel, Kelly e Thompson (2020), em guia voltado ao público adolescente, tratam alimentação, movimento e bem-estar como um conjunto integrado de escolhas cotidianas, e não como prescrições isoladas. A abordagem é sensata: nenhuma intervenção funciona bem quando tratada como item de checklist.</p>
-
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_145700087_xy5fcg.png" alt="Infográfico com as diretrizes da OMS para atividade física na adolescência">
-        <figcaption>Figura 6 – Diretrizes da OMS para atividade física em adolescentes de 5 a 17 anos.<span class="fonte">Fonte: elaborado pelos autores (2026) com base em OMS (2020).</span></figcaption>
-    </figure>
-</div>
-
-<!-- ============ 7 LIMITES E BARREIRAS (p. 10) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">10</span>
-    <h2>7 Limites e Barreiras à Busca por Ajuda</h2>
-    <p>É preciso, no entanto, evitar o entusiasmo excessivo. A atividade física, embora eficaz como eixo preventivo e adjuvante, não substitui tratamentos clínicos especializados quando patologias psíquicas se instalam. Reconhecer os próprios limites e buscar ajuda profissional é um passo de maturidade.</p>
-    <p>No Brasil, esse passo enfrenta barreiras concretas: Fukuda et al. (2016) identificaram estigma, desconfiança nos serviços e dificuldade de reconhecer o próprio sofrimento como motivos que afastam jovens da ajuda especializada. Não basta recomendar a busca por apoio — é preciso construir condições para que ela aconteça. Famílias, escolas e redes de apoio local têm papel central nesse processo.</p>
-
-    <figure class="figura">
-        <img src="https://res.cloudinary.com/dxphpupax/image/upload/f_auto/q_auto/imagem_2026-11-08_145906066_ohq7ly.png" alt="Infográfico sobre barreiras à busca por ajuda em saúde mental entre jovens brasileiros">
-        <figcaption>Figura 7 – Principais barreiras à busca por ajuda em saúde mental entre jovens brasileiros.<span class="fonte">Fonte: elaborado pelos autores (2026) com base em Fukuda et al. (2016).</span></figcaption>
-    </figure>
-</div>
-
-<!-- ============ 8 CONSIDERAÇÕES FINAIS (p. 11) ============ -->
-<div class="pagina conteudo">
-    <span class="page-number">11</span>
-    <h2>8 Considerações Finais</h2>
-    <p>O autocuidado consciente na adolescência implica quebrar estigmas e compreender que corpo e mente operam de forma indissociável. Buscar auxílio diante do sofrimento continuado não é fraqueza — é uma das formas mais concretas de resiliência.</p>
-    <p>Este trabalho reforça que o exercício físico, longe de ser panaceia, constitui uma das frentes mais acessíveis e eficazes de promoção da saúde mental juvenil. Seus efeitos sobre o humor, o sono, a cognição e a convivência social são bem documentados, ainda que com as ressalvas metodológicas discutidas. Combinado ao acolhimento familiar, à informação qualificada na escola e ao acesso a serviços de saúde, o movimento pode transformar a experiência da adolescência — de um período de atrito crônico em uma fase de construção de autonomia e bem-estar.</p>
-</div>
-
-<!-- ============ REFERÊNCIAS (p. 12) ============ -->
-<div class="pagina conteudo referencias">
-    <span class="page-number">12</span>
-    <h2>Referências</h2>
-    <p>AMERICAN PSYCHOLOGICAL ASSOCIATION. <strong>Stress in America 2021: one year later, a new wave of pandemic health concerns</strong>. Washington, DC: APA, 2021. Disponível em: https://www.apa.org. Acesso em: 6 nov. 2026.</p>
-
-    <p>CARDEL, Michelle; KELLY, Aaron S.; THOMPSON, Lindsay A. Becoming Your Healthiest Self: An Eat-Well, Get-Fit, Feel-Great Guide for Teens. <em>JAMA Pediatrics</em>, [S.l.], v. 174, n. 7, p. 736, 2020. Disponível em: https://jamanetwork.com. Acesso em: 6 nov. 2026.</p>
-
-    <p>DESLANDES, Andrea <em>et al.</em> Exercise and mental health: many reasons to move. <em>Neuropsychobiology</em>, [S.l.], v. 59, n. 4, p. 191-198, 2009. Disponível em: https://www.karger.com. Acesso em: 6 nov. 2026.</p>
-
-    <p>FUKUDA, Cláudia Cristina <em>et al.</em> Saúde mental de jovens brasileiros: barreiras à busca por ajuda profissional. <em>Estudos de Psicologia (Campinas)</em>, Campinas, v. 33, n. 2, p. 355-365, 2016. Disponível em: https://www.scielo.br. Acesso em: 6 nov. 2026.</p>
-
-    <p>ORGANIZAÇÃO MUNDIAL DA SAÚDE. <strong>Diretrizes da OMS para atividade física e comportamento sedentário: num piscar de olhos</strong>. Genebra: OMS, 2020. Disponível em: https://www.who.int. Acesso em: 6 nov. 2026.</p>
-
-    <p>ORGANIZAÇÃO MUNDIAL DA SAÚDE. <strong>Mental health: strengthening our response</strong>. Genebra: OMS, 2022. Disponível em: https://www.who.int. Acesso em: 6 nov. 2026.</p>
-
-    <p>PARKER, Nadine <em>et al.</em> Assessment of Neurobiological Mechanisms of Cortical Thinning During Childhood and Adolescence and Their Implications for Psychiatric Disorders. <em>JAMA Psychiatry</em>, [S.l.], v. 77, n. 11, p. 1127-1136, 2020. Disponível em: https://jamanetwork.com. Acesso em: 6 nov. 2026.</p>
-
-    <p>PELUSO, Marco Aurélio Monteiro; GUERRA DE ANDRADE, Laura Helena. Physical activity and mental health: the association between exercise and mood. <em>Clinics</em>, São Paulo, v. 60, n. 1, p. 61-70, 2005. Disponível em: https://www.scielo.br. Acesso em: 6 nov. 2026.</p>
-
-    <p>SINGH, Amika <em>et al.</em> Physical Activity and Performance at School: A Systematic Review of the Literature Including a Methodological Quality Assessment. <em>Archives of Pediatrics &amp; Adolescent Medicine</em>, [S.l.], v. 166, n. 1, p. 49-55, 2012. Disponível em: https://jamanetwork.com. Acesso em: 6 nov. 2026.</p>
 </div>
 
 </body>
